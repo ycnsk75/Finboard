@@ -1,0 +1,3 @@
+{'ticker': 'sol', 'power': {'detail': 'No API Key provided for protected endpoint.'}, 'electricity': {'detail': 'No API Key provided for protected endpoint.'}, 'emissions': {'detail': 'No API Key provided for protected endpoint.'}}
+{'ticker': 'pol', 'power': {'detail': 'No API Key provided for protected endpoint.'}, 'electricity': {'detail': 'No API Key provided for protected endpoint.'}, 'emissions': {'detail': 'No API Key provided for protected endpoint.'}}
+{'ticker': 'near', 'power': {'detail': 'No API Key provided for protected endpoint.'}, 'electricity': {'detail': 'No API Key provided for protected endpoint.'}, 'emissions': {'detail': 'No API Key provided for protected endpoint.'}}
