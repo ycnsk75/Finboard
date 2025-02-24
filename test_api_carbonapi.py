@@ -9,7 +9,7 @@ OUTPUT_FILE = "network_data.txt"
 HEADERS = {
     "Authorization": f"Bearer {API_KEY_CARBONAPI}",
 }
-
+#test carbonapi
 # 1️⃣ Fetch available tickers
 def fetch_tickers():
     url = "https://v2.api.carbon-ratings.com/currencies"
