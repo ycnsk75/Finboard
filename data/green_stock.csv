@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ID,Company,Ticker,Category,Stock Exchange,Market Bdollar,ESG Score,Revenue Bdollar,Main Focus,Region,Year Founded
+=======
+ID,Company,Ticker,Category,Stock Exchange,Market (B$),ESG Score,Revenue (B$),Main Focus,Region,Year Founded
+>>>>>>> d4bf646 (First commit)
 1,Tesla,TSLA,Sustainable Transportation,NASDAQ (USA),750.2,37,81.5,Electric Vehicles,North America,2003
 2,NextEra Energy,NEE,Renewable Energy,NYSE (USA),110.3,28,21.7,Renewable Energy,North America,1925
 3,Iberdrola,IBE.MC,Renewable Energy,Madrid Stock Exchange,75.4,25,44.8,Renewable Energy,Europe,1992
