@@ -1,0 +1,16 @@
+ID,Cryptocurrency,Ticker,Category,Blockchain,Market (B$),ESG Score,Transaction Energy (Joules),Main Focus,Region,Year Founded
+1,Cardano,ADA,Renewable Energy Blockchain,Cardano,35.0,32,1820,Energy-Efficient Transactions,Global,2017
+2,Solana,SOL,Renewable Energy Blockchain,Solana,70.0,30,2707,High-Speed Green Transactions,Global,2017
+3,Polkadot,DOT,Interoperable Blockchain,Polkadot,15.0,31,2000,Interoperability & Sustainability,Global,2020
+4,Algorand,ALGO,Carbon-Neutral Blockchain,Algorand,5.0,33,1500,Carbon-Neutral Operations,Global,2019
+5,Tezos,XTZ,Self-Amending Blockchain,Tezos,3.5,34,1200,Energy-Efficient Governance,Global,2018
+6,Stellar,XLM,Financial Inclusion Blockchain,Stellar,8.0,29,1000,Low-Cost Green Payments,Global,2014
+7,Nano,XNO,Efficient Blockchain,Nano,0.8,35,112,Near-Zero Energy Transactions,Global,2015
+8,Chia,XCH,Proof of Space Blockchain,Chia,1.2,36,500,Storage-Based Sustainability,Global,2021
+9,IOTA,MIOTA,IoT Blockchain,IOTA,2.0,33,400,Fee-Less Green IoT Transactions,Global,2016
+10,Hedera,HBAR,Enterprise Blockchain,Hedera,4.5,32,800,High-Throughput Efficiency,Global,2018
+11,BitGreen,BITG,Sustainability Blockchain,BitGreen,0.1,37,300,Eco-Friendly Incentives,Global,2017
+12,EOS,EOS,Decentralized Apps Blockchain,EOS,2.8,31,600,Efficient dApp Platform,Global,2018
+13,Flow,FLOW,NFT Blockchain,Flow,3.0,34,700,Sustainable NFT Ecosystem,Global,2020
+14,Avalanche,AVAX,Scalable Blockchain,Avalanche,20.0,30,2500,Scalable Green Solutions,Global,2020
+15,XRP,XRP,Payment Blockchain,XRP Ledger,25.0,28,3400,Low-Energy Payments,Global,2012
