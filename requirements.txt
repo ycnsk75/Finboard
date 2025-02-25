@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 cachetools==5.5.2
 =======
 >>>>>>> 52bba9a (Streamlit test app and update requirements)
@@ -51,3 +52,11 @@ tzdata==2025.1
 urllib3==2.3.0
 google-cloud-storage==3.00.0
 google-cloud-bigquery==3.29.0
+=======
+streamlit
+google-cloud-bigquery
+google-cloud-storage
+requests
+pandas
+plotly
+>>>>>>> 986e569 (Correct notebook and create structure)
