@@ -42,3 +42,11 @@ install :
 # start test api code 
 testapi:
 	python test_api_carbonapi.py
+
+
+push_to_GCR:
+	python connect_course_to_GCP.py
+
+
+toy_api:
+	python toy_api.py
