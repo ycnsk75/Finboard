@@ -1,0 +1,6 @@
+streamlit
+google-cloud-bigquery
+google-cloud-storage
+requests
+pandas
+plotly
