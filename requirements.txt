@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 cachetools==5.5.2
 certifi==2025.1.31
 charset-normalizer==3.4.1
@@ -40,3 +41,13 @@ six==1.17.0
 threadpoolctl==3.5.0
 tzdata==2025.1
 urllib3==2.3.0
+google-cloud-storage==3.00.0
+google-cloud-bigquery==3.29.0
+=======
+streamlit
+google-cloud-bigquery
+google-cloud-storage
+requests
+pandas
+plotly
+>>>>>>> 986e569 (Correct notebook and create structure)
