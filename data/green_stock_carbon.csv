@@ -1,4 +1,4 @@
-"ID","Company","Ticker","Electricity Consumption (GWh)","CO₂ Emissions (million tons)","Electrical Power"
+"ID","Company","Ticker","Electricity Consumption GWh","CO2 Emissions million tons","Electrical Power"
 1,"Tesla","TSLA",5000,1.2,"5000 GWh"
 2,"NextEra Energy","NEE","50*","25","62000 MW (capacity)"
 3,"Iberdrola","IBE.MC",300,10,"40000 MW (capacity)"
