@@ -1,137 +1,54 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 "Coin","Symbol","Price","Change","Percent_Change","High_24h","Low_24h","Open_24h","Previous_Close_24h","Timestamp"
-"Bitcoin","btc",90000.0,-6774.0,-7.0,97000.0,88500.0,96774.0,96774.0,1740366720
-"Ethereum","eth",2500.0,-262.5,-9.5,2800.0,2450.0,2762.5,2762.5,1740366720
-"XRPL","xrp",2.2,-0.236,-9.7,2.5,2.1,2.436,2.436,1740366720
-"BNB Chain","bnb",650.0,-20.0,-2.99,680.0,640.0,670.0,670.0,1740366720
-"Solana","sol",180.0,-25.02,-12.2,210.0,175.0,205.02,205.02,1740366720
-"USDC","usdc",1.0,0.0,0.0,1.01,0.99,1.0,1.0,1740366720
-"Dogecoin","doge",0.25,-0.0296,-10.6,0.29,0.24,0.2796,0.2796,1740366720
-"Cardano","ada",0.75,-0.02,-2.6,0.78,0.73,0.77,0.77,1740366720
-"TRON","trx",0.20,-0.005,-2.44,0.21,0.19,0.205,0.205,1740366720
-"Wrapped Bitcoin","wbtc",89500.0,-6700.0,-6.97,96500.0,88000.0,96200.0,96200.0,1740366720
-"Chainlink","link",18.0,-0.5,-2.7,18.6,17.8,18.5,18.5,1740366720
-"Sui","sui",4.0,-0.3,-6.98,4.4,3.9,4.3,4.3,1740366720
-"Avalanche","avax",40.0,-3.0,-6.98,43.5,39.0,43.0,43.0,1740366720
-"Stellar","xlm",0.35,-0.01,-2.78,0.37,0.34,0.36,0.36,1740366720
-"Litecoin","ltc",130.0,-10.0,-7.14,142.0,128.0,140.0,140.0,1740366720
-"Shiba Inu","shib",0.000032,-0.000003,-8.57,0.000035,0.000031,0.000035,0.000035,1740366720
-"TON","ton",3.5,-0.2,-5.41,3.8,3.4,3.7,3.7,1740366720
-"UNUS SED LEO","leo",9.0,-0.1,-1.1,9.2,8.9,9.1,9.1,1740366720
-"Polkadot","dot",8.0,-0.4,-4.76,8.5,7.8,8.4,8.4,1740366720
-"Bitcoin Cash","bch",600.0,-40.0,-6.25,650.0,590.0,640.0,640.0,1740366720
-"Uniswap","uni",10.0,-0.6,-5.66,10.8,9.8,10.6,10.6,1740366720
-"Near Protocol","near",6.0,-0.5,-7.69,6.6,5.9,6.5,6.5,1740366720
-"Aave","aave",150.0,-5.0,-3.23,157.0,148.0,155.0,155.0,1740366720
-"Ondo","ondo",2.0,-0.1,-4.76,2.2,1.9,2.1,2.1,1740366720
-"Aptos","apt",7.0,-0.6,-7.89,7.8,6.8,7.6,7.6,1740366720
-"DAI","dai",1.0,0.0,0.0,1.01,0.99,1.0,1.0,1740366720
-"VeChain","vet",0.04,-0.002,-4.76,0.042,0.039,0.042,0.042,1740366720
-"Polygon","pol",0.35,-0.02,-5.41,0.38,0.34,0.37,0.37,1740366720
-"Algorand","algo",0.25,-0.015,-5.66,0.27,0.24,0.265,0.265,1740366720
-"Filecoin","fil",5.0,-0.3,-5.66,5.4,4.9,5.3,5.3,1740366720
-"Cosmos","atom",8.0,-0.5,-5.88,8.6,7.8,8.5,8.5,1740366720
-"Arbitrum","arb",1.5,-0.1,-6.25,1.65,1.45,1.6,1.6,1740366720
-"Optimism","op",2.0,-0.15,-6.98,2.2,1.9,2.15,2.15,1740366720
-"Injective","inj",20.0,-1.5,-6.98,22.0,19.5,21.5,21.5,1740366720
-"Quant","qnt",90.0,-3.0,-3.23,94.0,88.0,93.0,93.0,1740366720
-"The Graph","grt",0.18,-0.01,-5.26,0.19,0.17,0.19,0.19,1740366720
-"Tezos","xtz",1.2,-0.07,-5.51,1.3,1.15,1.27,1.27,1740366720
-"The Sandbox","sand",0.40,-0.02,-4.76,0.43,0.39,0.42,0.42,1740366720
-"IOTA","iota",0.25,-0.015,-5.66,0.27,0.24,0.265,0.265,1740366720
-"Bitcoin SV","bsv",50.0,-3.0,-5.66,54.0,48.0,53.0,53.0,1740366720
-"Curve DAO","crv",0.55,-0.03,-5.17,0.59,0.53,0.58,0.58,1740366720
-"ApeCoin","ape",1.5,-0.1,-6.25,1.65,1.45,1.6,1.6,1740366720
-"Chiliz","chz",0.15,-0.01,-6.25,0.16,0.14,0.16,0.16,1740366720
-"ZkSync","zk",0.20,-0.015,-6.98,0.22,0.19,0.215,0.215,1740366720
-"Celo","celo",0.80,-0.05,-5.88,0.86,0.77,0.85,0.85,1740366720
-"Siacoin","sc",0.005,-0.0003,-5.66,0.0054,0.0048,0.0053,0.0053,1740366720
-"Casper","cspr",0.015,-0.001,-6.25,0.016,0.014,0.016,0.016,1740366720
-"Dash","dash",35.0,-2.0,-5.41,38.0,34.0,37.0,37.0,1740366720
-"Echelon Prime","prime",10.0,-0.5,-4.76,10.6,9.8,10.5,10.5,1740366720
-"Binance USD","busd",1.0,0.0,0.0,1.01,0.99,1.0,1.0,1740366720
-"Decentraland","mana",0.45,-0.03,-6.25,0.49,0.43,0.48,0.48,1740366720
-"Axie Infinity","axs",7.0,-0.4,-5.41,7.5,6.8,7.4,7.4,1740366720
-"Basic Attention","bat",0.30,-0.02,-6.25,0.32,0.29,0.32,0.32,1740366720
-=======
-=======
->>>>>>> e29bd70 (Update green_crypto.csv with indices-carbon-ratings)
-"Coin","Type","Marketcap","Electrical Power","Electricity Consumption (annualised)","CO₂ Emissions (annualised)"
-"Bitcoin","btc","PoW","$1,955,659,623,788","18.7 GW","164.8 TWh","70.0 Mt CO₂"
-"Ethereum","eth","PoS","$332,456,292,674","690.9 kW","6,031,023.3 kWh","1,920,449.5 kg CO₂"
-"XRPL","xrp","Other1","$152,585,452,892","52.1 kW","461,743.3 kWh","190,534.0 kg CO₂"
-"BNB Chain","bnb","PoS","$96,534,792,840","0.9 kW","11,529.4 kWh","4,124.3 kg CO₂"
-"Solana","sol","PoS","$85,573,810,561","1,933.1 kW","16,812,243.3 kWh","5,170,125.0 kg CO₂"
-"USDC","usdc","Token","$56,362,907,060","N/A","16,089.1 kWh","5,068.9 kg CO₂"
-"Dogecoin","doge","PoW","$37,697,628,983","1.0 GW","8.7 TWh","3.7 Mt CO₂"
-"Cardano","ada","PoS","$29,042,752,059","59.1 kW","514,386.2 kWh","178,996.3 kg CO₂"
-"TRON","trx","PoS","$21,095,421,778","402.6 kW","3,512,621.0 kWh","1,322,427.6 kg CO₂"
-"Wrapped Bitcoin","wbtc","Token","$12,686,499,079","Missing CCRI analysis","Missing CCRI analysis","Missing CCRI analysis"
-"Chainlink","link","Token","$11,802,666,351","N/A","311.5 kWh","99.2 kg CO₂"
-"Sui","sui","PoS","$10,709,527,122","95.8 kW","838,990.8 kWh","385,096.8 kg CO₂"
-"Avalanche","avax","PoS","$10,619,569,726","367.2 kW","3,301,700.6 kWh","1,232,790.0 kg CO₂"
-"Stellar","xlm","Other2","$10,377,849,893","9.2 kW","83,766.4 kWh","26,781.6 kg CO₂"
-"Litecoin","ltc","PoW","$10,175,304,335","0.3 GW","3.0 TWh","1.3 Mt CO₂"
-"Shiba Inu","shib","Token","$9,274,847,910","N/A","470.4 kWh","149.8 kg CO₂"
-"TON","ton","PoS","$9,172,037,631","719.2 kW","6,340,392.0 kWh","1,861,993.5 kg CO₂"
-"UNUS SED LEO","leo","Token","$9,018,671,142","N/A","2.9 kWh","0.9 kg CO₂"
-"Polkadot","dot","PoS","$8,003,286,742","99.9 kW","875,247.2 kWh","265,584.1 kg CO₂"
-"Bitcoin Cash","bch","PoW","$6,508,494,205","0.1 GW","0.7 TWh","0.3 Mt CO₂"
-"Uniswap","uni","Token","$5,619,652,332","N/A","22,995.9 kWh","7,324.0 kg CO₂"
-"Near Protocol","near","PoS","$4,198,838,527","342.5 kW","3,036,270.9 kWh","1,232,709.0 kg CO₂"
-"Aave","aave","Token","$3,892,017,649","N/A","1,089.0 kWh","346.9 kg CO₂"
-"Ondo","ondo","Token","$3,800,216,516","N/A","333.8 kWh","106.3 kg CO₂"
-"Aptos","apt","PoS","$3,688,223,865","41.7 kW","365,457.2 kWh","136,707.4 kg CO₂"
-"DAI","dai","Token","$3,490,983,564","N/A","316.7 kWh","100.9 kg CO₂"
-"VeChain","vet","Other3","$2,687,784,713","9.7 kW","84,075.3 kWh","35,917.3 kg CO₂"
-"Polygon","pol","PoS","$2,637,508,570","N/A","164,875.7 kWh","69.5 t CO₂"
-"Algorand","algo","PoS","$2,363,056,247","197.4 kW","1,602,892.1 kWh","545,698.7 kg CO₂"
-"Filecoin","fil","PoS","$2,222,219,710","25,137.7 kW","222,390,609.9 kWh","111,042,604.1 kg CO₂"
-"Cosmos","atom","PoS","$2,181,278,072","84.7 kW","738,420.0 kWh","338,934.8 kg CO₂"
-"Arbitrum","arb","PoS","$2,175,754,809","N/A","2,043,487.7 kWh","937,952.9 kg CO₂"
-"Optimism","op","PoS","$1,889,556,890","N/A","225,406.5 kWh","99,472.1 kg CO₂"
-"Injective","inj","PoS","$1,613,780,186","14.6 kW","127,813.4 kWh","58,666.3 kg CO₂"
-"Quant","qnt","Token","$1,423,991,010","N/A","40.2 kWh","12.8 kg CO₂"
-"The Graph","grt","Token","$1,377,522,951","N/A","44.0 kWh","14.0 kg CO₂"
-"Tezos","xtz","PoS","$927,299,250","28.3 kW","248,743.5 kWh","75,373.7 kg CO₂"
-"The Sandbox","sand","Token","$920,001,543","N/A","31.4 kWh","10.0 kg CO₂"
-"IOTA","iota","PoS","$853,766,873","4.5 kW","51,799.5 kWh","16,684.2 kg CO₂"
-"Bitcoin SV","bsv","PoW","$759,507,586","0.0 GW","0.1 TWh","0.0 Mt CO₂"
-"Curve DAO","crv","Token","$682,454,744","N/A","103.7 kWh","33.0 kg CO₂"
-"ApeCoin","ape","Token","$590,243,847","N/A","76.0 kWh","24.2 kg CO₂"
-"Chiliz","chz","PoS","$503,352,273","1.0 kW","8,748.6 kWh","4,015.6 kg CO₂"
-"ZkSync","zk","PoS","$398,976,249","N/A","157,583.5 kWh","72,309.4 kg CO₂"
-"Celo","celo","PoS","$253,415,991","3.6 kW","30,975.2 kWh","10,910.5 kg CO₂"
-"Siacoin","sc","PoW","$229,208,725","0.0 GW","0.1 TWh","0.0 Mt CO₂"
-"Casper","cspr","PoS","$171,131,386","6.7 kW","58,906.2 kWh","17,357.2 kg CO₂"
-"Dash","dash","PoW","N/A","0.0 GW","0.1 TWh","0.0 Mt CO₂"
-"Echelon Prime","prime","Token","N/A","N/A","50.6 kWh","16.1 kg CO₂"
-"Binance USD","busd","Token","N/A","N/A","12.7 kWh","4.1 kg CO₂"
-"Decentraland","mana","Token","N/A","N/A","37.9 kWh","12.1 kg CO₂"
-"Axie Infinity","axs","Token","N/A","N/A","24.8 kWh","7.9 kg CO₂"
-<<<<<<< HEAD
-"Basic Attention","bat","Token","N/A","N/A","16.9 kWh","5.3 kg CO₂"
->>>>>>> e29bd70 (Update green_crypto.csv with indices-carbon-ratings)
-=======
-ID,Cryptocurrency,Ticker,Category,Blockchain,Market (B$),ESG Score,Transaction Energy (Joules),Main Focus,Region,Year Founded
-1,Cardano,ADA,Renewable Energy Blockchain,Cardano,35.0,32,1820,Energy-Efficient Transactions,Global,2017
-2,Solana,SOL,Renewable Energy Blockchain,Solana,70.0,30,2707,High-Speed Green Transactions,Global,2017
-3,Polkadot,DOT,Interoperable Blockchain,Polkadot,15.0,31,2000,Interoperability & Sustainability,Global,2020
-4,Algorand,ALGO,Carbon-Neutral Blockchain,Algorand,5.0,33,1500,Carbon-Neutral Operations,Global,2019
-5,Tezos,XTZ,Self-Amending Blockchain,Tezos,3.5,34,1200,Energy-Efficient Governance,Global,2018
-6,Stellar,XLM,Financial Inclusion Blockchain,Stellar,8.0,29,1000,Low-Cost Green Payments,Global,2014
-7,Nano,XNO,Efficient Blockchain,Nano,0.8,35,112,Near-Zero Energy Transactions,Global,2015
-8,Chia,XCH,Proof of Space Blockchain,Chia,1.2,36,500,Storage-Based Sustainability,Global,2021
-9,IOTA,MIOTA,IoT Blockchain,IOTA,2.0,33,400,Fee-Less Green IoT Transactions,Global,2016
-10,Hedera,HBAR,Enterprise Blockchain,Hedera,4.5,32,800,High-Throughput Efficiency,Global,2018
-11,BitGreen,BITG,Sustainability Blockchain,BitGreen,0.1,37,300,Eco-Friendly Incentives,Global,2017
-12,EOS,EOS,Decentralized Apps Blockchain,EOS,2.8,31,600,Efficient dApp Platform,Global,2018
-13,Flow,FLOW,NFT Blockchain,Flow,3.0,34,700,Sustainable NFT Ecosystem,Global,2020
-14,Avalanche,AVAX,Scalable Blockchain,Avalanche,20.0,30,2500,Scalable Green Solutions,Global,2020
-15,XRP,XRP,Payment Blockchain,XRP Ledger,25.0,28,3400,Low-Energy Payments,Global,2012
->>>>>>> d4bf646 (First commit)
-=======
-"Basic Attention","bat","Token","N/A","N/A","16.9 kWh","5.3 kg CO₂"
->>>>>>> e29bd70 (Update green_crypto.csv with indices-carbon-ratings)
+"Bitcoin","btc","90000","-6774","-7","97000","88500","96774","96774","1740366720"
+"Ethereum","eth","2500","-263","-10","2800","2450","2763","2763","1740366720"
+"XRPL","xrp","2","0","-10","3","2","2","2","1740366720"
+"BNB Chain","bnb","650","-20","-3","680","640","670","670","1740366720"
+"Solana","sol","180","-25","-12","210","175","205","205","1740366720"
+"USDC","usdc","1","0","0","1","1","1","1","1740366720"
+"Dogecoin","doge","0","0","-11","0","0","0","0","1740366720"
+"Cardano","ada","1","0","-3","1","1","1","1","1740366720"
+"TRON","trx","0","0","-2","0","0","0","0","1740366720"
+"Wrapped Bitcoin","wbtc","89500","-6700","-7","96500","88000","96200","96200","1740366720"
+"Chainlink","link","18","-1","-3","19","18","19","19","1740366720"
+"Sui","sui","4","0","-7","4","4","4","4","1740366720"
+"Avalanche","avax","40","-3","-7","44","39","43","43","1740366720"
+"Stellar","xlm","0","0","-3","0","0","0","0","1740366720"
+"Litecoin","ltc","130","-10","-7","142","128","140","140","1740366720"
+"Shiba Inu","shib","0.000032","0.000000","-9","0.000035","0.000031","0.000035","0.000035","1740366720"
+"TON","ton","4","0","-5","4","3","4","4","1740366720"
+"UNUS SED LEO","leo","9","0","-1","9","9","9","9","1740366720"
+"Polkadot","dot","8","0","-5","9","8","8","8","1740366720"
+"Bitcoin Cash","bch","600","-40","-6","650","590","640","640","1740366720"
+"Uniswap","uni","10","-1","-6","11","10","11","11","1740366720"
+"Near Protocol","near","6","-1","-8","7","6","7","7","1740366720"
+"Aave","aave","150","-5","-3","157","148","155","155","1740366720"
+"Ondo","ondo","2","0","-5","2","2","2","2","1740366720"
+"Aptos","apt","7","-1","-8","8","7","8","8","1740366720"
+"DAI","dai","1","0","0","1","1","1","1","1740366720"
+"VeChain","vet","0","0","-5","0","0","0","0","1740366720"
+"Polygon","pol","0","0","-5","0","0","0","0","1740366720"
+"Algorand","algo","0","0","-6","0","0","0","0","1740366720"
+"Filecoin","fil","5","0","-6","5","5","5","5","1740366720"
+"Cosmos","atom","8","-1","-6","9","8","9","9","1740366720"
+"Arbitrum","arb","2","0","-6","2","1","2","2","1740366720"
+"Optimism","op","2","0","-7","2","2","2","2","1740366720"
+"Injective","inj","20","-2","-7","22","20","22","22","1740366720"
+"Quant","qnt","90","-3","-3","94","88","93","93","1740366720"
+"The Graph","grt","0","0","-5","0","0","0","0","1740366720"
+"Tezos","xtz","1","0","-6","1","1","1","1","1740366720"
+"The Sandbox","sand","0","0","-5","0","0","0","0","1740366720"
+"IOTA","iota","0","0","-6","0","0","0","0","1740366720"
+"Bitcoin SV","bsv","50","-3","-6","54","48","53","53","1740366720"
+"Curve DAO","crv","1","0","-5","1","1","1","1","1740366720"
+"ApeCoin","ape","2","0","-6","2","1","2","2","1740366720"
+"Chiliz","chz","0","0","-6","0","0","0","0","1740366720"
+"ZkSync","zk","0","0","-7","0","0","0","0","1740366720"
+"Celo","celo","1","0","-6","1","1","1","1","1740366720"
+"Siacoin","sc","0.005","0.000","-6","0.005","0.005","0.005","0.005","1740366720"
+"Casper","cspr","0.015","0.000","-6","0.016","0.014","0.016","0.016","1740366720"
+"Dash","dash","35","-2","-5","38","34","37","37","1740366720"
+"Echelon Prime","prime","10","-1","-5","11","10","11","11","1740366720"
+"Binance USD","busd","1","0","0","1","1","1","1","1740366720"
+"Decentraland","mana","0","0","-6","0","0","0","0","1740366720"
+"Axie Infinity","axs","7","0","-5","8","7","7","7","1740366720"
+"Basic Attention","bat","0","0","-6","0","0","0","0","1740366720"
