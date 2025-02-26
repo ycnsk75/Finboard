@@ -4,3 +4,5 @@ google-cloud-storage
 requests
 pandas
 plotly
+python-dotenv
+finnhub-python
