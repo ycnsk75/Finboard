@@ -59,4 +59,9 @@ google-cloud-storage
 requests
 pandas
 plotly
+<<<<<<< HEAD
 >>>>>>> 986e569 (Correct notebook and create structure)
+=======
+python-dotenv
+finnhub-python
+>>>>>>> a00b5bf (create dag for etl pipeline and test finnboard)
