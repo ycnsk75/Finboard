@@ -1,5 +1,4 @@
 from google.cloud import bigquery
-from google.cloud import storage
 import json
 import requests
 from google.cloud import storage
@@ -10,7 +9,7 @@ import os
 def gcp_client_auth(key_json_file):
     try:
         storage_client = storage.Client.from_service_account_json(key_json_file)
-        #bigquery_client = bigquery.Client.from_service_account_json(key_json_file)  
+        bigquery_client = bigquery.Client.from_service_account_json(key_json_file)  
         return storage_client #, bigquery_client
     except Exception as e:
         print(f"Error connecting to Google Cloud: {e}")
@@ -80,7 +79,7 @@ key_json_file = os.getenv('KEY_JSON_FILE')
 bucket_name = os.getenv('BUCKET_NAME')
 folder_name = os.getenv('FOLDER_NAME')
 # gcp client auth  add variable after comment for bq usage# , bigquery_client
-storage_client = gcp_client_auth(key_json_file)
+storage_client, bigquery_client = gcp_client_auth(key_json_file)
 
 # export raw data to CS
 #push_data_to_cs(storage_client, bucket_name, raw_data_file_name, table_name)
@@ -100,7 +99,10 @@ storage_client = gcp_client_auth(key_json_file)
 #import_data_to_bq_from_cs(bigquery_client, table_name, bucket_name, blob_name, table_id)
 csv_files = {
     "raw/crypto/green_crypto.csv": "data/green_crypto.csv",
-    "raw/stock/green_stock.csv": "data/green_stock.csv"
+    "raw/stock/green_stock.csv": "data/green_stock.csv",
+    "raw/crypto/green_crypto_carbon.csv":"data/green_crypto_carbon.csv",
+    "raw/crypto/green_stock_carbon.csv":"data/green_stock_carbon.csv",
+
 }
 
 endpoints = ["assets", "rates", "exchanges", "markets", "candles"]
@@ -113,17 +115,18 @@ api_endpoints = {
     "raw/crypto/candles.json": "https://api.coincap.io/v2/candles",
 }
 
-get_cloud_storage_contents(storage_client, bucket_name)
+#get_cloud_storage_contents(storage_client, bucket_name)
 # Upload CSV files
-# to_upload = [(dest, src) for dest, src in csv_files.items()]
-# for destination_blob_name, local_file in to_upload:
-#     push_data_to_cs(storage_client, bucket_name, destination_blob_name, local_file)
+to_upload = [(dest, src) for dest, src in csv_files.items()]
+for destination_blob_name, local_file in to_upload:
+    push_data_to_cs(storage_client, bucket_name, destination_blob_name, local_file)
 
 # Fetch API data and upload to Cloud Storage
 
-for destination_blob_name, url in api_endpoints.items(): 
-    data = fetch_api_data(url)
+# for destination_blob_name, url in api_endpoints.items(): 
+#     data = fetch_api_data(url)
     
-    if data:  # Ensure we have valid data
-        json_data = json.dumps(data)  # Convert dictionary to JSON string
-        push_data_to_cs(storage_client, bucket_name, destination_blob_name, data=json_data)
+#     if data:  # Ensure we have valid data
+#         json_data = json.dumps(data)  # Convert dictionary to JSON string
+#         push_data_to_cs(storage_client, bucket_name, destination_blob_name, data=json_data)
+import_data_to_bq_from_cs
