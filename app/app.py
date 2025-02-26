@@ -599,4 +599,196 @@ with tab1:
                     x=historical_stock_data['daily_return'].dropna(),
                     nbinsx=30,
                     marker_color='rgba(30, 132, 73, 0.6)',
-                    marker_line_color
+                    marker_line_color='rgba(30, 132, 73, 1)',
+                    marker_line_width=1
+                ))
+                
+                hist_fig.update_layout(
+                    title="Distribution des rendements journaliers",
+                    xaxis_title="Rendement (%)",
+                    yaxis_title="Fréquence",
+                    height=300,
+                    template="plotly_white"
+                )
+                
+                st.plotly_chart(hist_fig, use_container_width=True)
+                
+                st.markdown(f"<p><b>Volatilité (écart-type):</b> {volatility:.2f}%</p>", unsafe_allow_html=True)
+            
+            st.markdown("</div>", unsafe_allow_html=True)
+    
+    else:
+        st.warning("Aucune action ne correspond aux filtres sélectionnés.")
+
+# Section 2: Green Cryptocurrencies
+with tab2:
+    st.markdown("<p class='sub-header'>Green Cryptocurrencies</p>", unsafe_allow_html=True)
+    
+    # Filtres pour les cryptomonnaies
+    with st.container():
+        st.markdown("<div class='filter-section'>", unsafe_allow_html=True)
+        col1, col2 = st.columns(2)
+        with col1:
+            type_filter = st.multiselect("Filtrer par type de consensus", 
+                                       options=crypto_df["Type"].unique(), 
+                                       default=crypto_df["Type"].unique(),
+                                       key="crypto_type_filter")
+        with col2:
+            # Filtre basé sur la consommation électrique (valeur convertie en nombre)
+            power_max = st.slider("Consommation électrique max (kW)", 
+                              min_value=0.0, 
+                              max_value=0.025, 
+                              value=0.025, 
+                              step=0.001,
+                              format="%.3f",
+                              key="power_slider")
+        st.markdown("</div>", unsafe_allow_html=True)
+    
+    # Conversion de 'Electrical Power' en nombres pour le filtre
+    crypto_df['Power_Numeric'] = crypto_df['Electrical Power'].str.extract(r'([\d.]+)').astype(float)
+    
+    # Application des filtres
+    filtered_cryptos = crypto_df[
+        (crypto_df["Type"].isin(type_filter)) &
+        (crypto_df["Power_Numeric"] <= power_max)
+    ]
+    
+    if not filtered_cryptos.empty:
+        # Affichage des cryptomonnaies dans des cartes
+        st.markdown("<p style='font-size:1.2rem;font-weight:600;margin-top:1rem;'>Cryptomonnaies écologiques</p>", unsafe_allow_html=True)
+        
+        # Distribution en colonnes
+        num_cryptos = len(filtered_cryptos)
+        num_cols = 3
+        num_rows = (num_cryptos + num_cols - 1) // num_cols
+        
+        for row in range(num_rows):
+            cols = st.columns(num_cols)
+            for i in range(num_cols):
+                idx = row * num_cols + i
+                if idx < num_cryptos:
+                    crypto = filtered_cryptos.iloc[idx]
+                    with cols[i]:
+                        st.markdown(f"""
+                        <div class='metric-card'>
+                            <p class='company-name'>{crypto['Coin']}</p>
+                            <p class='ticker'>{crypto['Type']}</p>
+                            <p class='focus-tag'>Marketcap: {crypto['Marketcap']}</p>
+                            <p style='font-size:0.9rem;margin-top:0.5rem;'><b>Électricité:</b> {crypto['Electrical Power']}</p>
+                            <p style='font-size:0.9rem;'><b>CO₂:</b> {crypto['CO₂ Emissions (annualised)']}</p>
+                        </div>
+                        """, unsafe_allow_html=True)
+        
+        # Sélection et visualisation de crypto
+        st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
+        selected_crypto = st.selectbox(
+            "Sélectionnez une cryptomonnaie pour voir les données historiques", 
+            filtered_cryptos["Coin"],
+            key="crypto_selector"
+        )
+        
+        # Générer des données historiques pour la crypto sélectionnée
+        crypto_pattern = filtered_cryptos[filtered_cryptos["Coin"] == selected_crypto]["Pattern"].values[0]
+        historical_crypto_data = generate_historical_data(selected_crypto, days=365, pattern=crypto_pattern)
+        
+        # Définir la couleur du graphique en fonction du pattern
+        if crypto_pattern == "uptrend":
+            crypto_color = "#27AE60"  # vert vif
+        elif crypto_pattern == "downtrend":
+            crypto_color = "#E74C3C"  # rouge
+        elif crypto_pattern == "volatile":
+            crypto_color = "#F39C12"  # orange
+        elif crypto_pattern == "cyclical":
+            crypto_color = "#3498DB"  # bleu
+        else:
+            crypto_color = "#2C3E50"  # gris foncé
+        
+        # Graphique principal
+        crypto_fig = go.Figure()
+        
+        crypto_fig.add_trace(go.Scatter(
+            x=historical_crypto_data['Date'],
+            y=historical_crypto_data['Price'],
+            mode='lines',
+            name=selected_crypto,
+            line=dict(color=crypto_color, width=2.5),
+            hovertemplate='Date: %{x}<br>Prix: $%{y:.2f}<extra></extra>'
+        ))
+        
+        crypto_fig.update_layout(
+            title=f"{selected_crypto} - Évolution du cours",
+            xaxis_title="Date",
+            yaxis_title="Prix (USD)",
+            height=500,
+            template="plotly_white",
+            xaxis=dict(
+                rangeselector=dict(
+                    buttons=list([
+                        dict(count=1, label="1m", step="month", stepmode="backward"),
+                        dict(count=6, label="6m", step="month", stepmode="backward"),
+                        dict(count=1, label="YTD", step="year", stepmode="todate"),
+                        dict(count=1, label="1y", step="year", stepmode="backward"),
+                        dict(step="all")
+                    ]),
+                    bgcolor="#F9F9F9",
+                    activecolor="#1E8449"
+                ),
+                rangeslider=dict(visible=True),
+                type="date"
+            )
+        )
+        
+        st.plotly_chart(crypto_fig, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+        
+        # Tableau comparatif de l'impact environnemental
+        st.markdown("<p class='sub-header'>Impact environnemental comparatif</p>", unsafe_allow_html=True)
+        
+        # Préparation des données pour le graphique comparatif
+        impact_fig = go.Figure()
+        
+        # Crypto filtrées triées par consommation
+        sorted_cryptos = filtered_cryptos.sort_values(by="Power_Numeric")
+        
+        impact_fig.add_trace(go.Bar(
+            x=sorted_cryptos["Coin"],
+            y=sorted_cryptos["Power_Numeric"],
+            marker_color="#27AE60",
+            name="Consommation (kW)",
+            hovertemplate='Crypto: %{x}<br>Consommation: %{y:.6f} kW<extra></extra>'
+        ))
+        
+        impact_fig.update_layout(
+            title="Comparaison de la consommation électrique",
+            xaxis_title="Cryptomonnaie",
+            yaxis_title="Consommation (kW)",
+            height=400,
+            template="plotly_white",
+            yaxis=dict(type="log")  # Échelle logarithmique pour mieux visualiser les petites valeurs
+        )
+        
+        st.plotly_chart(impact_fig, use_container_width=True)
+        
+        # Tableau d'information
+        st.markdown("<div class='chart-container'>", unsafe_allow_html=True)
+        st.markdown("""
+        <h3 style='font-size:1.3rem;margin-bottom:1rem;'>Pourquoi ces cryptomonnaies sont considérées comme écologiques</h3>
+        <p>Ces cryptomonnaies utilisent des mécanismes de consensus alternatifs qui consomment considérablement moins d'énergie que les cryptomonnaies traditionnelles basées sur le Proof of Work (preuve de travail).</p>
+        """, unsafe_allow_html=True)
+        
+        # Table de comparaison
+        st.table(filtered_cryptos[["Coin", "Type", "Electricity Consumption (annualised)", "CO₂ Emissions (annualised)"]])
+        st.markdown("</div>", unsafe_allow_html=True)
+    else:
+        st.warning("Aucune cryptomonnaie ne correspond aux filtres sélectionnés.")
+
+# Divider
+st.markdown("<div class='gradient-divider'></div>", unsafe_allow_html=True)
+
+# Footer avec disclaimer
+st.markdown("""
+<div class='footer'>
+    <p style='font-weight:600;'>Green Investment Dashboard</p>
+    <p class='small-text'>Ce tableau de bord est fourni uniquement à des fins d'illustration. Les données présentées sont générées aléatoirement et ne constituent pas des conseils d'investissement.</p>
+</div>
+""", unsafe_allow_html=True)
