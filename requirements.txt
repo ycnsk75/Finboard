@@ -30,7 +30,7 @@ kiwisolver==1.4.8
 matplotlib==3.10.0
 numpy==2.2.3
 packaging==24.2
-pandas==2.2.3
+pandas
 pillow==11.1.0
 proto-plus==1.26.0
 protobuf==5.29.3
@@ -38,7 +38,7 @@ pyasn1==0.6.1
 pyasn1_modules==0.4.1
 pyparsing==3.2.1
 python-dateutil==2.9.0.post0
-python-dotenv==1.0.1
+python-dotenv
 pytz==2025.1
 requests==2.32.3
 rsa==4.9
