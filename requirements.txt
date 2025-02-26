@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 certifi==2025.1.31
 charset-normalizer==3.4.1
 contourpy==1.3.1
 cycler==0.12.1
+finnhub-python==2.4.0
 fonttools==4.56.0
 idna==3.10
 joblib==1.4.2
@@ -21,21 +21,9 @@ scikit-learn==1.6.1
 scipy==1.15.2
 seaborn==0.13.2
 six==1.17.0
+streamlit==1.3.0
 threadpoolctl==3.5.0
 tzdata==2025.1
 urllib3==2.3.0
 google-cloud-storage==3.00.0
 google-cloud-bigquery==3.29.0
-=======
-streamlit
-google-cloud-bigquery
-google-cloud-storage
-requests
-pandas
-plotly
-<<<<<<< HEAD
->>>>>>> 986e569 (Correct notebook and create structure)
-=======
-python-dotenv
-finnhub-python
->>>>>>> a00b5bf (create dag for etl pipeline and test finnboard)
