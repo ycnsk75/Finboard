@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 "Coin","Symbol","Price","Change","Percent_Change","High_24h","Low_24h","Open_24h","Previous_Close_24h","Timestamp"
 "Bitcoin","btc",90000.0,-6774.0,-7.0,97000.0,88500.0,96774.0,96774.0,1740366720
 "Ethereum","eth",2500.0,-262.5,-9.5,2800.0,2450.0,2762.5,2762.5,1740366720
@@ -54,6 +55,8 @@
 "Axie Infinity","axs",7.0,-0.4,-5.41,7.5,6.8,7.4,7.4,1740366720
 "Basic Attention","bat",0.30,-0.02,-6.25,0.32,0.29,0.32,0.32,1740366720
 =======
+=======
+>>>>>>> a00b5bf39b5c0b8516e5c64fd5fddecdbc256b71
 "Coin","Type","Marketcap","Electrical Power","Electricity Consumption (annualised)","CO₂ Emissions (annualised)"
 "Bitcoin","btc","PoW","$1,955,659,623,788","18.7 GW","164.8 TWh","70.0 Mt CO₂"
 "Ethereum","eth","PoS","$332,456,292,674","690.9 kW","6,031,023.3 kWh","1,920,449.5 kg CO₂"
@@ -107,5 +110,9 @@
 "Binance USD","busd","Token","N/A","N/A","12.7 kWh","4.1 kg CO₂"
 "Decentraland","mana","Token","N/A","N/A","37.9 kWh","12.1 kg CO₂"
 "Axie Infinity","axs","Token","N/A","N/A","24.8 kWh","7.9 kg CO₂"
+<<<<<<< HEAD
 "Basic Attention","bat","Token","N/A","N/A","16.9 kWh","5.3 kg CO₂"
 >>>>>>> e29bd70 (Update green_crypto.csv with indices-carbon-ratings)
+=======
+"Basic Attention","bat","Token","N/A","N/A","16.9 kWh","5.3 kg CO₂"
+>>>>>>> a00b5bf39b5c0b8516e5c64fd5fddecdbc256b71
