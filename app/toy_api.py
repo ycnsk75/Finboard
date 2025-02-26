@@ -36,9 +36,10 @@ def get_api_info(api_name):
 
 # Example Usage
 if __name__ == "__main__":
-    STOCKS_FILE = "top_200_stocks.txt"
-    OUTPUT_JSON = "stock_data.json"
-    TEMP_JSON = "stock_data_tmp.json"
+    STOCKS_FILE = "data/top_200_stocks.txt"
+    OUTPUT_JSON = "data/stock_data.json"
+    TEMP_JSON = "data/stock_data_tmp.json"
+    
     # List of top 200 biggest stocks (Replace with a real updated list)
     top_200_stocks = [
         "AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "BRK.A", "META", "V", "JNJ",

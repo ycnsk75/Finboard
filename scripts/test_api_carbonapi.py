@@ -5,7 +5,7 @@ import seaborn as sns
 import os
 
 API_KEY_CARBONAPI = os.getenv("API_KEY_CARBONAPI")
-OUTPUT_FILE = "network_data.txt"
+OUTPUT_FILE = "data/network_data.txt"
 HEADERS = {
     "Authorization": f"Bearer {API_KEY_CARBONAPI}",
 }
