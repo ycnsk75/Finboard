@@ -1,5 +1,6 @@
 # Finboard
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 App Diagram
 
@@ -14,3 +15,5 @@ CI/CD:
                     [Terraform] --> [GCP Infra]
 =======
 >>>>>>> ee27675 (re)
+=======
+>>>>>>> 4c41e96aa847388e8d7a7aca0b89456915ba4454
