@@ -12,8 +12,8 @@ import json
 
 load_dotenv()
 
-SERVICE_ACCOUNT_KEY = "/home/airflow/gcs/data/devops-practice-python.json"
-FINNHUB_API_KEY = "cutr999r01qv6ijjvqn0cutr999r01qv6ijjvqng"
+SERVICE_ACCOUNT_KEY = os.getenv("KEY_JSON_FILE")
+FINNHUB_API_KEY = os.getenv("API_KEY_FINHUB")
 finnhub_client = finnhub.Client(api_key=FINNHUB_API_KEY)
 COINCAP_API = "https://api.coincap.io/v2/assets/"
 
@@ -33,7 +33,7 @@ def load_csv_to_gcs():
         blob = bucket.blob(f"raw/csv/{csv_file}")
         blob.upload_from_filename(csv_file)
 
-def fetch_finnhub_quotes():
+def fetch_finnhub_marketcap():
     """Fetch quote data (current price only) from Finnhub for green_stock companies"""
     storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_KEY)
     bucket = storage_client.bucket("green-investment-raw-data")
@@ -46,10 +46,10 @@ def fetch_finnhub_quotes():
     date_str = datetime.now().strftime("%Y-%m-%d")
     for ticker in tickers:
         try:
-            quote = finnhub_client.quote(ticker)
-            minimal_quote = {"ticker": ticker, "current_price": quote["c"]}
+            basic_financial = finnhub_client.company_basic_financials(ticker)
+            marketcap = {"ticker": ticker, "marketCapitalization": basic_financial["marketCapitalization"]}
             blob = bucket.blob(f"raw/finnhub_quotes/{ticker}_quote_{date_str}.json")
-            blob.upload_from_string(json.dumps(minimal_quote))
+            blob.upload_from_string(json.dumps(marketcap))
         except Exception as e:
             print(f"Error fetching quote for {ticker}: {e}")
 
@@ -212,7 +212,7 @@ def load_data_to_bigquery():
 with DAG(
     "elt_green_data",
     start_date=datetime(2025, 2, 1),
-    schedule_interval="0 0 1 * *",
+    schedule="0 0 1 * *",
     catchup=False
 ) as dag:
     upload_to_gcs = PythonOperator(
