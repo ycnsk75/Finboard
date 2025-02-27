@@ -81,7 +81,7 @@ def fetch_coincap_prices():
         except Exception as e:
             print(f"Error fetching price for {coin}: {e}")
 
-def load_csv_to_bigquery():
+def load_data_to_bigquery():
     """Load raw CSV and JSON data from GCS to BigQuery staging tables"""
     bq_client = bigquery.Client.from_service_account_json(SERVICE_ACCOUNT_KEY)
     
@@ -162,6 +162,25 @@ def load_csv_to_bigquery():
         }
     ]
     
+    json_configs = [
+        {
+            "source": "gs://green-investment-raw-data/raw/finnhub_quotes/*.json",
+            "destination": "green-investment.staging.raw_finnhub_quotes",
+            "schema": [
+                {"name": "ticker", "type": "STRING"},
+                {"name": "current_price", "type": "FLOAT"}
+            ]
+        },
+        {
+            "source": "gs://green-investment-raw-data/raw/coincap_prices/*.json",
+            "destination": "green-investment.staging.raw_coincap_prices",
+            "schema": [
+                {"name": "coin", "type": "STRING"},
+                {"name": "price_usd", "type": "FLOAT"}
+            ]
+        }
+    ]
+       
     for config in csv_configs:
         job_config = bigquery.LoadJobConfig(
             source_format="CSV" if config["source"].endswith(".csv") else "NEWLINE_DELIMITED_JSON",
@@ -176,6 +195,20 @@ def load_csv_to_bigquery():
             job_config=job_config
         ).result()
 
+    for config in json_configs:
+        job_config = bigquery.LoadJobConfig(
+            source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
+            schema=config["schema"],
+            write_disposition="WRITE_TRUNCATE",
+            autodetect=False
+        )
+        load_job = bq_client.load_table_from_uri(
+            config["source"], 
+            config["destination"], 
+            job_config=job_config
+        )
+        load_job.result()  
+        
 with DAG(
     "elt_green_data",
     start_date=datetime(2025, 2, 1),
@@ -198,8 +231,8 @@ with DAG(
     )
     
     load_to_bq = PythonOperator(
-        task_id="load_csv_to_bigquery",
-        python_callable=load_csv_to_bigquery
+        task_id="load_data_to_bigquery",
+        python_callable=load_data_to_bigquery
     )
     
     run_dbt = BashOperator(

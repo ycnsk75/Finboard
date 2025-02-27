@@ -74,8 +74,8 @@ def fetch_ratings_raw():
     url = "https://v2.api.carbon-ratings.com/currencies"
     response = requests.get(url, headers=HEADERS)
 
-    print("Raw Response:", response.text)  # Debugging
+    print("Raw Response:", response.text)  
 
-    return response.json()  # This line fails if the response is not JSON
+    return response.json()  
 
 #ratings_data_raw = fetch_ratings_raw()
