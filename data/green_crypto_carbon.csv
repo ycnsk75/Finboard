@@ -1,4 +1,4 @@
-"Coin","Symbol","Type","Marketcap","Electrical Power","Electricity Consumption (annualised)","CO₂ Emissions (annualised)"
+"Coin","Symbol","Type","Marketcap","Electrical_Power","Electricity_Consumption_(annualised)","CO2_Emissions_(annualised)"
 "Bitcoin","btc","PoW","$1,955,659,623,788","163.812 TWh","164.8 TWh","70.0 Mt"
 "Ethereum","eth","PoS","$332,456,292,674","0.006052284 TWh","0.0060310233 TWh","0.0019204495 Mt"
 "XRPL","xrp","Other1","$152,585,452,892","0.000456396 TWh","0.0004617433 TWh","0.000190534 Mt"
