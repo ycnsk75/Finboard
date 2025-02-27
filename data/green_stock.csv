@@ -1,90 +1,90 @@
-ID,Company,Ticker,Category,Stock Exchange,Market (B$),ESG Score,Revenue (B$),Main Focus,Region,Year Founded
-1,Tesla,TSLA,Sustainable Transportation,NASDAQ (USA),750.2,37,81.5,Electric Vehicles,North America,2003
-2,NextEra Energy,NEE,Renewable Energy,NYSE (USA),110.3,28,21.7,Renewable Energy,North America,1925
-3,Iberdrola,IBE.MC,Renewable Energy,Madrid Stock Exchange,75.4,25,44.8,Renewable Energy,Europe,1992
-4,Ørsted,ORSTED.CO,Renewable Energy,Copenhagen Stock Exchange,32.8,22,12.4,Wind Energy,Europe,1972
-5,Panasonic,6752.T,Green Technology,Tokyo Stock Exchange,22.6,34,63.2,Green Technology,Asia,1918
-6,Daikin,6367.T,Energy Efficiency,Tokyo Stock Exchange,48.9,31,27.5,Air Conditioning,Asia,1924
-7,Air Liquide,AI.PA,Industrial Gases,Euronext Paris,87.3,29,29.9,Industrial Gases,Europe,1902
-8,Veolia,VIE.PA,Waste Management,Euronext Paris,21.5,26,42.9,Resource Management,Europe,1853
-9,Saint-Gobain,SGO.PA,Sustainable Materials,Euronext Paris,35.2,30,51.2,Sustainable Materials,Europe,1665
-10,Boralex,BLX.TO,Renewable Energy,Toronto Stock Exchange,2.8,27,0.8,Wind Energy,North America,1990
-11,Alstom,ALO.PA,Sustainable Transportation,Euronext Paris,5.9,32,16.5,Sustainable Transport,Europe,1928
-12,Verallia,VRLA.PA,Sustainable Materials,Euronext Paris,9.8,33,3.4,Sustainable Packaging,Europe,2015
-13,Derichebourg,DBG.PA,Waste Management,Euronext Paris,1.2,35,4.5,Recycling,Europe,1956
-14,First Solar,FSLR,Solar Energy,NASDAQ (USA),16.8,24,3.3,Solar Energy,North America,1999
-15,Enphase Energy,ENPH,Solar Energy,NASDAQ (USA),14.2,31,2.3,Solar Energy,North America,2006
-16,Brookfield Renewable Partners,BEP,Renewable Energy,NYSE (USA),19.5,23,4.7,Renewable Energy,North America,1999
-17,SunPower,SPWR,Solar Energy,NASDAQ (USA),0.6,36,1.7,Solar Energy,North America,1985
-18,Plug Power,PLUG,Hydrogen & Fuel Cells,NASDAQ (USA),3.2,39,0.9,Hydrogen & Energy,North America,1997
-19,Shell,SHEL,Energy Transition,Euronext Amsterdam,220.5,42,386.2,Sustainable Energy,Europe,1907
-20,Enel,ENEL.MI,Renewable Energy,Milan Stock Exchange,65.8,27,92.3,Renewable Energy,Europe,1962
-21,Suez,SEV.PA,Waste Management,Euronext Paris,12.4,26,18.7,Environment & Services,Europe,1858
-22,Tata Power,TATAPOWER.NS,Renewable Energy,Bombay Stock Exchange,8.9,28,5.6,Renewable Energy,Asia,1915
-23,Xcel Energy,XEL,Renewable Energy,NASDAQ (USA),45.3,29,13.4,Renewable Energy,North America,1909
-24,Canadian Solar,CSIQ,Solar Energy,NASDAQ (USA),2.1,30,7.2,Solar Energy,North America,2001
-25,Vestas Wind Systems,VWS.CO,Renewable Energy,Copenhagen Stock Exchange,32.8,22,18.9,Wind Energy,Europe,1945
-26,Brookfield Infrastructure Partners,BIP,Sustainable Infrastructure,NYSE (USA),,23,7.8,Sustainable Infrastructure,North America,2008
-27,Royal Philips,PHIA.AS,Sustainable Technology,Euronext Amsterdam,35.6,34,22.3,Sustainable Technology,Europe,1891
-28,General Electric,GE,Renewable Energy,NYSE (USA),120.5,38,76.6,Energy & Technology,North America,1892
-29,Siemens Gamesa,SGRE.MC,Renewable Energy,Madrid Stock Exchange,15.2,27,12.8,Wind Energy,Europe,1976
-30,Schneider Electric,SU.PA,Energy Efficiency,Euronext Paris,95.4,31,34.2,Sustainable Energy Management,Europe,1836
-31,Johnson Controls,JCI,Energy Efficiency,NYSE (USA),45.8,33,23.7,Energy Efficiency,North America,1885
-32,E.ON,EOAN.DE,Renewable Energy,Frankfurt Stock Exchange,35.2,28,45.6,Renewable Energy,Europe,2000
-33,Agnico Eagle Mines,AEM.TO,Mining & Environment,Toronto Stock Exchange,25.6,29,6.8,Mining & Environment,North America,1957
-34,Waste Management,WM,Waste Management,NYSE (USA),65.4,26,19.7,Waste Management,North America,1968
-35,NIO,NIO,Sustainable Transportation,NYSE (USA),35.2,37,7.8,Electric Vehicles,Asia,2014
-36,Ballard Power Systems,BLDP,Hydrogen & Fuel Cells,NASDAQ (USA),4.2,39,1.2,Hydrogen Fuel Cells,North America,1979
-37,Xylem,XYL,Water Technology,NYSE (USA),25.6,30,5.8,Water Solutions,North America,2011
-38,Renewable Energy Group,REGI,Biofuels,NASDAQ (USA),3.2,35,2.4,Biofuel Production,North America,1996
-39,Clearway Energy,CWEN,Renewable Energy,NYSE (USA),8.9,27,1.2,Renewable Energy,North America,2012
-40,Array Technologies,ARRY,Solar Energy,NASDAQ (USA),4.5,32,1.8,Solar Technology,North America,1989
-41,Solaredge,SEDG,Solar Energy,NASDAQ (USA),15.6,31,2.3,Solar Technology,North America,2006
-42,BYD Company,1211.HK,Sustainable Transportation,Hong Kong Stock Exchange,95.4,36,45.6,Electric Vehicles,Asia,1995
-43,Shoals Technologies,SHLS,Solar Energy,NASDAQ (USA),6.8,33,0.9,Solar Infrastructure,North America,1996
-44,RWE AG,RWE.DE,Renewable Energy,Frankfurt Stock Exchange,35.2,28,25.6,Renewable Energy,Europe,1898
-45,Covanta Holding,CVA,Waste Management,NYSE (USA),2.8,34,1.8,Waste-to-Energy,North America,1939
-46,Sunrun,RUN,Solar Energy,NASDAQ (USA),6.5,35,1.9,Solar Energy,North America,2007
-47,Stem Inc,STEM,Energy Storage,NYSE (USA),2.1,38,0.8,Energy Storage,North America,2009
-48,Li Auto,LI,Sustainable Transportation,NASDAQ (USA),25.6,37,5.6,Electric Vehicles,Asia,2015
-49,Sunnova,NOVA,Solar Energy,NYSE (USA),4.2,36,1.2,Solar Energy,North America,2012
-50,Hydro One,H.TO,Renewable Energy,Toronto Stock Exchange,12.4,29,7.8,Power Distribution,North America,1906
-51,Landis+Gyr,LAND.SW,Water Technology,SIX Swiss Exchange,3.2,32,1.8,Smart Energy,Europe,1896
-52,Xinyi Solar,0968.HK,Solar Energy,Hong Kong Stock Exchange,15.6,33,2.3,Solar Glass,Asia,1988
-53,Neste,NESTE.HE,Biofuels,Helsinki Stock Exchange,45.6,30,18.9,Biofuels,Europe,1948
-54,Meridian Energy,MEL.NZ,Renewable Energy,New Zealand Stock Exchange,8.9,27,2.4,Renewable Energy,Oceania,1998
-55,Northland Power,NPI.TO,Renewable Energy,Toronto Stock Exchange,6.8,28,1.8,Renewable Energy,North America,1987
-56,ITM Power,ITM.L,Hydrogen & Fuel Cells,London Stock Exchange,2.1,39,0.8,Green Hydrogen,Europe,2001
-57,EDP Renovaveis,EDPR.LS,Renewable Energy,Euronext Lisbon,25.6,27,5.6,Renewable Energy,Europe,1994
-58,Nel ASA,NEL.OL,Hydrogen & Fuel Cells,Oslo Stock Exchange,4.2,38,1.2,Hydrogen Technology,Europe,1927
-59,Contact Energy,CEN.NZ,Renewable Energy,New Zealand Stock Exchange,3.2,29,1.8,Renewable Energy,Oceania,1995
-60,Ormat Technologies,ORA,Renewable Energy,NYSE (USA),4.2,28,0.8,Geothermal Energy,North America,1965
-61,Sunworks,SUNW,Solar Energy,NASDAQ (USA),0.1,35,0.1,Solar Energy,North America,1983
-62,JinkoSolar,JKS,Solar Energy,NYSE (USA),2.5,30,7.8,Solar Energy,Asia,2006
-63,Scatec ASA,SCATC.OL,Renewable Energy,Oslo Stock Exchange,3.8,27,1.2,Renewable Energy,Europe,2007
-64,Atlantica Sustainable Infrastructure,AY,Renewable Energy,NASDAQ (USA),,27,1.1,Renewable Energy,North America,2013
-65,Fluence Energy,FLNC,Energy Storage,NASDAQ (USA),6.8,32,1.4,Energy Storage,North America,2018
-66,Bloom Energy,BE,Hydrogen & Fuel Cells,NYSE (USA),4.5,38,1.2,Hydrogen Fuel Cells,North America,2001
-67,Sunlight Financial,SUNL,Solar Energy,NYSE (USA),0.8,34,0.3,Solar Energy,North America,2014
-68,Maxeon Solar Technologies,MAXN,Solar Energy,NASDAQ (USA),1.2,31,1.1,Solar Energy,Asia,2020
-69,Azure Power Global,AZRE,Solar Energy,NYSE (USA),0.9,33,0.4,Solar Energy,Asia,2008
-70,Sunseap Group,Not Listed*,Renewable Energy,Singapore Exchange,0.5,29,0.2,Renewable Energy,Asia,2011
-71,ReNew Power,RNW,Renewable Energy,NASDAQ (USA),6.8,28,1.2,Renewable Energy,Asia,2011
-72,Green Plains,GPRE,Biofuels,NASDAQ (USA),1.8,35,2.5,Biofuel Production,North America,2004
-73,Gevo,GEVO,Biofuels,NASDAQ (USA),0.6,37,0.1,Biofuels,North America,2005
-74,Aemetis,AMTX,Biofuels,NASDAQ (USA),0.4,36,0.2,Biofuels,North America,2006
-75,Darling Ingredients,DAR,Biofuels,NYSE (USA),10.5,30,4.8,Biofuels,North America,1882
-76,Amyris,AMRS,Biofuels,NASDAQ (USA),1.2,38,0.3,Biofuels,North America,2003
-78,LanzaTech,LNZA,Biofuels,NASDAQ (USA),1.8,33,0.2,Biofuels,North America,2005
-79,Rivian Automotive,RIVN,Sustainable Transportation,NASDAQ (USA),15.0,36,0.5,Electric Vehicles,North America,2009
-80,LG Chem,051910.KS,Sustainable Materials,Korea Exchange (KRX),35.8,32,40.2,Battery Materials,Asia,1947
-81,Waste Connections,WCN,Waste Management,NYSE (USA),45.2,28,8.0,Waste Management,North America,1997
-82,Umicore,UMI.BR,Sustainable Materials,Euronext Brussels,8.5,34,25.6,Recycling & Materials,Europe,1906
-83,CATL (Contemporary Amperex Technology),300750.SZ,Green Technology,Shenzhen Stock Exchange,150.0,31,55.8,Battery Technology,Asia,2011
-84,SSE plc,SSE.L,Renewable Energy,London Stock Exchange,25.4,29,12.5,Renewable Energy,Europe,1998
-85,Trane Technologies,TT,Energy Efficiency,NYSE (USA),65.8,33,17.7,Climate Solutions,North America,1871
-86,OPAL Fuels,OPAL,Biofuels,NASDAQ (USA),1.5,35,0.3,Renewable Natural Gas,North America,1998
-87,EDF Renewables,EDF.PA,Renewable Energy,Euronext Paris,39.0,28,15.0,"Wind, Solar, Hydro Energy",Europe,1946
-88,ChargePoint,CHPT,Energy Storage,NYSE (USA),10.0,34,0.2,EV Charging Infrastructure,North America,2007
-89,Lucid Group,LCID,Sustainable Transportation,NASDAQ (USA),10.0,35,0.2,Luxury Electric Vehicles,North America,2007
-90,Republic Services,RSG,Waste Management,NYSE (USA),44.0,27,12.0,Waste & Recycling Services,North America,1998
+"ID","Company","Ticker","Category","Stock_Exchange","Marketcap_B_dollar","ESG_Score","Revenue_B_dollar","Main_Focus","Region","Year_Founded"
+"1","Tesla","TSLA","Sustainable Transportation","NASDAQ (USA)","750.2","37","81.5","Electric Vehicles","North America","2003"
+"2","NextEra Energy","NEE","Renewable Energy","NYSE (USA)","110.3","28","21.7","Renewable Energy","North America","1925"
+"3","Iberdrola","IBE.MC","Renewable Energy","Madrid Stock Exchange","75.4","25","44.8","Renewable Energy","Europe","1992"
+"4","Ørsted","ORSTED.CO","Renewable Energy","Copenhagen Stock Exchange","32.8","22","12.4","Wind Energy","Europe","1972"
+"5","Panasonic","6752.T","Green Technology","Tokyo Stock Exchange","22.6","34","63.2","Green Technology","Asia","1918"
+"6","Daikin","6367.T","Energy Efficiency","Tokyo Stock Exchange","48.9","31","27.5","Air Conditioning","Asia","1924"
+"7","Air Liquide","AI.PA","Industrial Gases","Euronext Paris","87.3","29","29.9","Industrial Gases","Europe","1902"
+"8","Veolia","VIE.PA","Waste Management","Euronext Paris","21.5","26","42.9","Resource Management","Europe","1853"
+"9","Saint-Gobain","SGO.PA","Sustainable Materials","Euronext Paris","35.2","30","51.2","Sustainable Materials","Europe","1665"
+"10","Boralex","BLX.TO","Renewable Energy","Toronto Stock Exchange","2.8","27","0.8","Wind Energy","North America","1990"
+"11","Alstom","ALO.PA","Sustainable Transportation","Euronext Paris","5.9","32","16.5","Sustainable Transport","Europe","1928"
+"12","Verallia","VRLA.PA","Sustainable Materials","Euronext Paris","9.8","33","3.4","Sustainable Packaging","Europe","2015"
+"13","Derichebourg","DBG.PA","Waste Management","Euronext Paris","1.2","35","4.5","Recycling","Europe","1956"
+"14","First Solar","FSLR","Solar Energy","NASDAQ (USA)","16.8","24","3.3","Solar Energy","North America","1999"
+"15","Enphase Energy","ENPH","Solar Energy","NASDAQ (USA)","14.2","31","2.3","Solar Energy","North America","2006"
+"16","Brookfield Renewable Partners","BEP","Renewable Energy","NYSE (USA)","19.5","23","4.7","Renewable Energy","North America","1999"
+"17","SunPower","SPWR","Solar Energy","NASDAQ (USA)","0.6","36","1.7","Solar Energy","North America","1985"
+"18","Plug Power","PLUG","Hydrogen & Fuel Cells","NASDAQ (USA)","3.2","39","0.9","Hydrogen & Energy","North America","1997"
+"19","Shell","SHEL","Energy Transition","Euronext Amsterdam","220.5","42","386.2","Sustainable Energy","Europe","1907"
+"20","Enel","ENEL.MI","Renewable Energy","Milan Stock Exchange","65.8","27","92.3","Renewable Energy","Europe","1962"
+"21","Suez","SEV.PA","Waste Management","Euronext Paris","12.4","26","18.7","Environment & Services","Europe","1858"
+"22","Tata Power","TATAPOWER.NS","Renewable Energy","Bombay Stock Exchange","8.9","28","5.6","Renewable Energy","Asia","1915"
+"23","Xcel Energy","XEL","Renewable Energy","NASDAQ (USA)","45.3","29","13.4","Renewable Energy","North America","1909"
+"24","Canadian Solar","CSIQ","Solar Energy","NASDAQ (USA)","2.1","30","7.2","Solar Energy","North America","2001"
+"25","Vestas Wind Systems","VWS.CO","Renewable Energy","Copenhagen Stock Exchange","32.8","22","18.9","Wind Energy","Europe","1945"
+"26","Brookfield Infrastructure Partners","BIP","Sustainable Infrastructure","NYSE (USA)","","23","7.8","Sustainable Infrastructure","North America","2008"
+"27","Royal Philips","PHIA.AS","Sustainable Technology","Euronext Amsterdam","35.6","34","22.3","Sustainable Technology","Europe","1891"
+"28","General Electric","GE","Renewable Energy","NYSE (USA)","120.5","38","76.6","Energy & Technology","North America","1892"
+"29","Siemens Gamesa","SGRE.MC","Renewable Energy","Madrid Stock Exchange","15.2","27","12.8","Wind Energy","Europe","1976"
+"30","Schneider Electric","SU.PA","Energy Efficiency","Euronext Paris","95.4","31","34.2","Sustainable Energy Management","Europe","1836"
+"31","Johnson Controls","JCI","Energy Efficiency","NYSE (USA)","45.8","33","23.7","Energy Efficiency","North America","1885"
+"32","E.ON","EOAN.DE","Renewable Energy","Frankfurt Stock Exchange","35.2","28","45.6","Renewable Energy","Europe","2000"
+"33","Agnico Eagle Mines","AEM.TO","Mining & Environment","Toronto Stock Exchange","25.6","29","6.8","Mining & Environment","North America","1957"
+"34","Waste Management","WM","Waste Management","NYSE (USA)","65.4","26","19.7","Waste Management","North America","1968"
+"35","NIO","NIO","Sustainable Transportation","NYSE (USA)","35.2","37","7.8","Electric Vehicles","Asia","2014"
+"36","Ballard Power Systems","BLDP","Hydrogen & Fuel Cells","NASDAQ (USA)","4.2","39","1.2","Hydrogen Fuel Cells","North America","1979"
+"37","Xylem","XYL","Water Technology","NYSE (USA)","25.6","30","5.8","Water Solutions","North America","2011"
+"38","Renewable Energy Group","REGI","Biofuels","NASDAQ (USA)","3.2","35","2.4","Biofuel Production","North America","1996"
+"39","Clearway Energy","CWEN","Renewable Energy","NYSE (USA)","8.9","27","1.2","Renewable Energy","North America","2012"
+"40","Array Technologies","ARRY","Solar Energy","NASDAQ (USA)","4.5","32","1.8","Solar Technology","North America","1989"
+"41","Solaredge","SEDG","Solar Energy","NASDAQ (USA)","15.6","31","2.3","Solar Technology","North America","2006"
+"42","BYD Company","1211.HK","Sustainable Transportation","Hong Kong Stock Exchange","95.4","36","45.6","Electric Vehicles","Asia","1995"
+"43","Shoals Technologies","SHLS","Solar Energy","NASDAQ (USA)","6.8","33","0.9","Solar Infrastructure","North America","1996"
+"44","RWE AG","RWE.DE","Renewable Energy","Frankfurt Stock Exchange","35.2","28","25.6","Renewable Energy","Europe","1898"
+"45","Covanta Holding","CVA","Waste Management","NYSE (USA)","2.8","34","1.8","Waste-to-Energy","North America","1939"
+"46","Sunrun","RUN","Solar Energy","NASDAQ (USA)","6.5","35","1.9","Solar Energy","North America","2007"
+"47","Stem Inc","STEM","Energy Storage","NYSE (USA)","2.1","38","0.8","Energy Storage","North America","2009"
+"48","Li Auto","LI","Sustainable Transportation","NASDAQ (USA)","25.6","37","5.6","Electric Vehicles","Asia","2015"
+"49","Sunnova","NOVA","Solar Energy","NASDAQ (USA)","4.2","36","1.2","Solar Energy","North America","2012"
+"50","Hydro One","H.TO","Renewable Energy","Toronto Stock Exchange","12.4","29","7.8","Power Distribution","North America","1906"
+"51","Landis+Gyr","LAND.SW","Water Technology","SIX Swiss Exchange","3.2","32","1.8","Smart Energy","Europe","1896"
+"52","Xinyi Solar","0968.HK","Solar Energy","Hong Kong Stock Exchange","15.6","33","2.3","Solar Glass","Asia","1988"
+"53","Neste","NESTE.HE","Biofuels","Helsinki Stock Exchange","45.6","30","18.9","Biofuels","Europe","1948"
+"54","Meridian Energy","MEL.NZ","Renewable Energy","New Zealand Stock Exchange","8.9","27","2.4","Renewable Energy","Oceania","1998"
+"55","Northland Power","NPI.TO","Renewable Energy","Toronto Stock Exchange","6.8","28","1.8","Renewable Energy","North America","1987"
+"56","ITM Power","ITM.L","Hydrogen & Fuel Cells","London Stock Exchange","2.1","39","0.8","Green Hydrogen","Europe","2001"
+"57","EDP Renovaveis","EDPR.LS","Renewable Energy","Euronext Lisbon","25.6","27","5.6","Renewable Energy","Europe","1994"
+"58","Nel ASA","NEL.OL","Hydrogen & Fuel Cells","Oslo Stock Exchange","4.2","38","1.2","Hydrogen Technology","Europe","1927"
+"59","Contact Energy","CEN.NZ","Renewable Energy","New Zealand Stock Exchange","3.2","29","1.8","Renewable Energy","Oceania","1995"
+"60","Ormat Technologies","ORA","Renewable Energy","NYSE (USA)","4.2","28","0.8","Geothermal Energy","North America","1965"
+"61","Sunworks","SUNW","Solar Energy","NASDAQ (USA)","0.1","35","0.1","Solar Energy","North America","1983"
+"62","JinkoSolar","JKS","Solar Energy","NYSE (USA)","2.5","30","7.8","Solar Energy","Asia","2006"
+"63","Scatec ASA","SCATC.OL","Renewable Energy","Oslo Stock Exchange","3.8","27","1.2","Renewable Energy","Europe","2007"
+"64","Atlantica Sustainable Infrastructure","AY","Renewable Energy","NASDAQ (USA)","","27","1.1","Renewable Energy","North America","2013"
+"65","Fluence Energy","FLNC","Energy Storage","NASDAQ (USA)","6.8","32","1.4","Energy Storage","North America","2018"
+"66","Bloom Energy","BE","Hydrogen & Fuel Cells","NYSE (USA)","4.5","38","1.2","Hydrogen Fuel Cells","North America","2001"
+"67","Sunlight Financial","SUNL","Solar Energy","NYSE (USA)","0.8","34","0.3","Solar Energy","North America","2014"
+"68","Maxeon Solar Technologies","MAXN","Solar Energy","NASDAQ (USA)","1.2","31","1.1","Solar Energy","Asia","2020"
+"69","Azure Power Global","AZRE","Solar Energy","NYSE (USA)","0.9","33","0.4","Solar Energy","Asia","2008"
+"70","Sunseap Group","Not Listed*","Renewable Energy","Singapore Exchange","0.5","29","0.2","Renewable Energy","Asia","2011"
+"71","ReNew Power","RNW","Renewable Energy","NASDAQ (USA)","6.8","28","1.2","Renewable Energy","Asia","2011"
+"72","Green Plains","GPRE","Biofuels","NASDAQ (USA)","1.8","35","2.5","Biofuel Production","North America","2004"
+"73","Gevo","GEVO","Biofuels","NASDAQ (USA)","0.6","37","0.1","Biofuels","North America","2005"
+"74","Aemetis","AMTX","Biofuels","NASDAQ (USA)","0.4","36","0.2","Biofuels","North America","2006"
+"75","Darling Ingredients","DAR","Biofuels","NYSE (USA)","10.5","30","4.8","Biofuels","North America","1882"
+"76","Amyris","AMRS","Biofuels","NASDAQ (USA)","1.2","38","0.3","Biofuels","North America","2003"
+"78","LanzaTech","LNZA","Biofuels","NASDAQ (USA)","1.8","33","0.2","Biofuels","North America","2005"
+"79","Rivian Automotive","RIVN","Sustainable Transportation","NASDAQ (USA)","15.0","36","0.5","Electric Vehicles","North America","2009"
+"80","LG Chem","051910.KS","Sustainable Materials","Korea Exchange (KRX)","35.8","32","40.2","Battery Materials","Asia","1947"
+"81","Waste Connections","WCN","Waste Management","NYSE (USA)","45.2","28","8.0","Waste Management","North America","1997"
+"82","Umicore","UMI.BR","Sustainable Materials","Euronext Brussels","8.5","34","25.6","Recycling & Materials","Europe","1906"
+"83","CATL (Contemporary Amperex Technology)","300750.SZ","Green Technology","Shenzhen Stock Exchange","150.0","31","55.8","Battery Technology","Asia","2011"
+"84","SSE plc","SSE.L","Renewable Energy","London Stock Exchange","25.4","29","12.5","Renewable Energy","Europe","1998"
+"85","Trane Technologies","TT","Energy Efficiency","NYSE (USA)","65.8","33","17.7","Climate Solutions","North America","1871"
+"86","OPAL Fuels","OPAL","Biofuels","NASDAQ (USA)","1.5","35","0.3","Renewable Natural Gas","North America","1998"
+"87","EDF Renewables","EDF.PA","Renewable Energy","Euronext Paris","39.0","28","15.0","Wind, Solar, Hydro Energy","Europe","1946"
+"88","ChargePoint","CHPT","Energy Storage","NYSE (USA)","10.0","34","0.2","EV Charging Infrastructure","North America","2007"
+"89","Lucid Group","LCID","Sustainable Transportation","NASDAQ (USA)","10.0","35","0.2","Luxury Electric Vehicles","North America","2007"
+"90","Republic Services","RSG","Waste Management","NYSE (USA)","44.0","27","12.0","Waste & Recycling Services","North America","1998"
