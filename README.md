@@ -1,4 +1,5 @@
 # Finboard
+<<<<<<< HEAD
 
 App Diagram
 
@@ -11,3 +12,5 @@ App Diagram
 CI/CD:
 [Github Actions] --> [Cloud Build] --> [Artifact Registry] --> [Cloud Run]
                     [Terraform] --> [GCP Infra]
+=======
+>>>>>>> ee27675 (re)
