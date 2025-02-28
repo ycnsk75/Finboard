@@ -272,4 +272,4 @@ with DAG(
         additional_run_config={"threads": 4}
     )
     
-    upload_to_gcs >> [fetch_finnhub, fetch_coincap] >> load_to_bq >> run_dbt_cloud_job
+    [fetch_finnhub, fetch_coincap] >> load_to_bq >> run_dbt_cloud_job
