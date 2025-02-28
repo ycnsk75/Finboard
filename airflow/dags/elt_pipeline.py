@@ -297,5 +297,6 @@ with DAG(
         additional_run_config={"threads": 4}
     )
     
-    [fetch_finnhub, fetch_coincap] >> [load_csv_to_bq, load_json_to_bq]  # Fetch tasks run in parallel
+    fetch_finnhub >> load_json_to_bq  # Fetch tasks run in parallel
+    fetch_coincap >> load_csv_to_bq # Fetch tasks run in parallel
     [load_csv_to_bq, load_json_to_bq] >> run_dbt_cloud_job # Load tasks run before dbt Cloud job
