@@ -6,6 +6,7 @@ from google.cloud import storage, bigquery
 from google.oauth2 import service_account
 from datetime import datetime, timedelta
 import pandas as pd
+import io as StringIO
 import finnhub
 import requests
 import json
@@ -85,7 +86,7 @@ def fetch_finnhub_financials():
     """Fetch quote and market capitalization from Finnhub for green_stock companies and store in GCS raw/ folder"""
     green_stock_blob = storage_client.bucket(BUCKET_NAME).blob(f"{STOCK_FOLDER_NAME}/green_stock.csv" if STOCK_FOLDER_NAME else "green_stock.csv")
     green_stock_data = green_stock_blob.download_as_string().decode("utf-8")
-    green_stock_df = pd.read_csv(pd.compat.StringIO(green_stock_data))
+    green_stock_df = pd.read_csv(StringIO(green_stock_data))
     tickers = green_stock_df["Ticker"].tolist()
     
     date_str = datetime.now().strftime("%Y-%m-%d")
@@ -110,7 +111,7 @@ def fetch_coincap_prices():
     """Fetch price data from CoinCap for green_crypto coins and store in GCS raw/ folder"""
     green_crypto_blob = storage_client.bucket(BUCKET_NAME).blob(f"{CRYPTO_FOLDER_NAME}/green_crypto.csv" if CRYPTO_FOLDER_NAME else "green_crypto.csv")
     green_crypto_data = green_crypto_blob.download_as_string().decode("utf-8")
-    green_crypto_df = pd.read_csv(pd.compat.StringIO(green_crypto_data))
+    green_crypto_df = pd.read_csv(StringIO(green_crypto_data))
     coins = green_crypto_df["Coin"].str.lower().tolist()
     
     date_str = datetime.now().strftime("%Y-%m-%d")
