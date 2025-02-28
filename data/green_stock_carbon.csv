@@ -1,4 +1,4 @@
-"ID","Company","Ticker","Electricity_Consumption_GWh","CO2_Emissions _Mt","Electrical_Power_GWh"
+"ID","Company","Ticker","Electricity_Consumption_GWh","CO2_Emissions_Mt","Electrical_Power_GWh"
 "1","Tesla","TSLA","5000","1.2","5000.0"
 "2","NextEra Energy","NEE","50","25","543120.0"
 "3","Iberdrola","IBE.MC","300","10","350400.0"
