@@ -6,7 +6,7 @@ from google.cloud import storage, bigquery
 from google.oauth2 import service_account
 from datetime import datetime, timedelta
 import pandas as pd
-import io as StringIO
+from io import StringIO
 import finnhub
 import requests
 import json
