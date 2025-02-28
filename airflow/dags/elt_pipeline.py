@@ -245,10 +245,6 @@ with DAG(
         "retry_delay": timedelta(minutes=5),
     }
 ) as dag:
-    upload_to_gcs = PythonOperator(
-        task_id="load_csv_to_gcs",
-        python_callable=load_csv_to_gcs
-    )
     
     fetch_finnhub = PythonOperator(
         task_id="fetch_finnhub_financials",
