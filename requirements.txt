@@ -1,44 +1,37 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+apache-airflow==2.8.2
 cachetools==5.5.2
-=======
->>>>>>> 52bba9a (Streamlit test app and update requirements)
 certifi==2025.1.31
 charset-normalizer==3.4.1
 contourpy==1.3.1
 cycler==0.12.1
-<<<<<<< HEAD
-finnhub-python==2.4.22
-=======
 finnhub-python==2.4.0
->>>>>>> 52bba9a (Streamlit test app and update requirements)
 fonttools==4.56.0
-google-api-core==2.24.1
+google-api-core==2.15.0
 google-auth==2.38.0
-google-cloud-bigquery==3.29.0
+google-cloud-bigquery==3.15.0
 google-cloud-core==2.4.2
-google-cloud-storage==3.0.0
+google-cloud-storage==2.9.0
 google-crc32c==1.6.0
 google-resumable-media==2.7.2
-googleapis-common-protos==1.68.0
-grpcio==1.71.0rc2
-grpcio-status==1.71.0rc2
+googleapis-common-protos==1.60.0
+grpcio==1.54.0
+grpcio-status==1.54.0
 idna==3.10
 joblib==1.4.2
 kiwisolver==1.4.8
 matplotlib==3.10.0
-numpy==2.2.3
+numpy==1.24.4
 packaging==24.2
-pandas
-pillow==11.1.0
-proto-plus==1.26.0
-protobuf==5.29.3
+pandas==2.0.3
+pillow==10.2.0  # Changed to be compatible with streamlit's requirement
+plotly==5.20.0
+proto-plus==1.22.3
+protobuf==4.23.4
 pyasn1==0.6.1
 pyasn1_modules==0.4.1
 pyparsing==3.2.1
 python-dateutil==2.9.0.post0
-python-dotenv
+python-dotenv==1.0.1
 pytz==2025.1
 requests==2.32.3
 rsa==4.9
@@ -46,22 +39,8 @@ scikit-learn==1.6.1
 scipy==1.15.2
 seaborn==0.13.2
 six==1.17.0
-streamlit==1.3.0
+streamlit==1.35.0
 threadpoolctl==3.5.0
 tzdata==2025.1
 urllib3==2.3.0
-google-cloud-storage==3.00.0
-google-cloud-bigquery==3.29.0
-=======
-streamlit
-google-cloud-bigquery
-google-cloud-storage
-requests
-pandas
-plotly
-<<<<<<< HEAD
->>>>>>> 986e569 (Correct notebook and create structure)
-=======
-python-dotenv
-finnhub-python
->>>>>>> a00b5bf (create dag for etl pipeline and test finnboard)
+pyarrow==9.0.0

@@ -4,4 +4,6 @@
 
 .python-version
 
+service-account-key.json
+
 /credentials
