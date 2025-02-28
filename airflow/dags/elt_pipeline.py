@@ -67,7 +67,7 @@ def fetch_api_data(url):
         return None
 
 # Initialize clients
-storage_client, bigquery_client = gcp_client_auth(KEY_JSON_FILE)
+storage_client, bigquery_client = gcp_client_auth()
 finnhub_client = finnhub.Client(api_key=API_KEY_FINHUB)
 
 def load_csv_to_gcs():
