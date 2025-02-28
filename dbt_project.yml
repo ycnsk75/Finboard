@@ -1,8 +1,8 @@
-name: 'finboard'
+name: finboard
 version: '1.0.0'
 config-version: 2
 
-profile: 'default'
+profile: default
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -18,6 +18,7 @@ clean-targets:
 
 models:
   finboard:
+    +schema: finboard
     staging:
       +materialized: view
     intermediate:
