@@ -3,39 +3,41 @@ from airflow.operators.python import PythonOperator
 from airflow.providers.dbt.cloud.operators.dbt import DbtCloudRunJobOperator
 from airflow.models import Variable
 from google.cloud import storage, bigquery
+from google.oauth2 import service_account
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
-import os
 import pandas as pd
 import finnhub
 import requests
 import json
 import time  # Already imported for previous time.sleep
 
-# Load environment variables from .env file
-load_dotenv()
-
-# Configuration from environment variables
-KEY_JSON_FILE = os.getenv('KEY_JSON_FILE')  # Path to service account key JSON file
-BUCKET_NAME = os.getenv('BUCKET_NAME')  # Default to projectbigquery
-FOLDER_NAME = os.getenv('FOLDER_NAME', '')  # Optional folder within bucket, default to empty string
-API_KEY_FINHUB = os.getenv('API_KEY_FINHUB')  # Finnhub API key from .env
-COINCAP_API = "https://api.coincap.io/v2/assets/"
-DBT_CLOUD_CONN_ID = "dbt_cloud"
-DBT_CLOUD_JOB_ID = os.getenv('DBT_CLOUD_JOB_ID')
+# Configuration from airflow variables
+KEY_JSON_FILE = Variable.get('KEY_JSON_FILE')  # Path to service account key JSON file
+BUCKET_NAME = Variable.get('BUCKET_NAME')  # Default to projectbigquery
+CRYPTO_FOLDER_NAME = Variable.get('CRYPTO_FOLDER_NAME') # Folder name for crypto data
+STOCK_FOLDER_NAME = Variable.get('STOCK_FOLDER_NAME') # Folder name for stock data
+COINCAP_FOLDER_NAME = Variable.get('COINCAP_FOLDER_NAME') # Folder name for CoinCap data
+FINNHUB_FOLDER_NAME = Variable.get('FINNHUB_FOLDER_NAME') # Folder name for Finnhub data
+API_KEY_FINHUB = Variable.get('API_KEY_FINHUB')  # Finnhub API key
+COINCAP_API = Variable.get('COINCAP_API')  # CoinCap API URL
+DBT_CLOUD_CONN_ID = Variable.get('DBT_CLOUD_CONN_ID') # Connection ID for dbt Cloud
+DBT_CLOUD_JOB_ID = Variable.get('DBT_CLOUD_JOB_ID') # dbt Cloud job ID
 
 # Validate required environment variables
-if not all([KEY_JSON_FILE, BUCKET_NAME, API_KEY_FINHUB, DBT_CLOUD_JOB_ID]):
-    raise ValueError("Missing required environment variables: KEY_JSON_FILE, BUCKET_NAME, API_KEY_FINHUB, or DBT_CLOUD_JOB_ID")
+if not all(
+    [KEY_JSON_FILE, BUCKET_NAME, CRYPTO_FOLDER_NAME, STOCK_FOLDER_NAME, COINCAP_FOLDER_NAME, FINNHUB_FOLDER_NAME, API_KEY_FINHUB, COINCAP_API, DBT_CLOUD_CONN_ID, DBT_CLOUD_JOB_ID]
+    ):
+    raise ValueError("Missing required environment variables: KEY_JSON_FILE, BUCKET_NAME, CRYPTO_FOLDER_NAME, STOCK_FOLDER_NAME, COINCAP_FOLDER_NAME, FINNHUB_FOLDER_NAME, API_KEY_FINHUB, COINCAP_API, DBT_CLOUD_CONN_ID, DBT_CLOUD_JOB_ID")
 
 # Dynamic schedule: 'None' for manual, '0 9 * * *' for daily 9 a.m.
 SCHEDULE_INTERVAL = Variable.get("FETCH_API_SCHEDULE", default_var="0 9 * * *")
 
 # Helper Functions
-def gcp_client_auth(key_json_file):
+def gcp_client_auth():
     try:
-        storage_client = storage.Client.from_service_account_json(key_json_file)
-        bigquery_client = bigquery.Client.from_service_account_json(key_json_file)
+        credentials = service_account.Credentials.from_service_account_info(json.loads(KEY_JSON_FILE))
+        storage_client = storage.Client(credentials=credentials, project=credentials.project_id)
+        bigquery_client = bigquery.Client(credentials=credentials, project=credentials.project_id)
         return storage_client, bigquery_client
     except Exception as e:
         print(f"Error connecting to Google Cloud: {e}")
@@ -44,7 +46,7 @@ def gcp_client_auth(key_json_file):
 def push_data_to_cs(storage_client, bucket_name, destination_blob_name, local_file=None, data=None):
     try:
         bucket = storage_client.bucket(bucket_name)
-        full_blob_name = f"{FOLDER_NAME}/{destination_blob_name}" if FOLDER_NAME else destination_blob_name
+        full_blob_name = f"{destination_blob_name}"
         blob = bucket.blob(full_blob_name)
         if local_file:
             blob.upload_from_filename(local_file)
@@ -81,7 +83,7 @@ def load_csv_to_gcs():
 
 def fetch_finnhub_financials():
     """Fetch quote and market capitalization from Finnhub for green_stock companies and store in GCS raw/ folder"""
-    green_stock_blob = storage_client.bucket(BUCKET_NAME).blob(f"{FOLDER_NAME}/green_stock.csv" if FOLDER_NAME else "green_stock.csv")
+    green_stock_blob = storage_client.bucket(BUCKET_NAME).blob(f"{STOCK_FOLDER_NAME}/green_stock.csv" if STOCK_FOLDER_NAME else "green_stock.csv")
     green_stock_data = green_stock_blob.download_as_string().decode("utf-8")
     green_stock_df = pd.read_csv(pd.compat.StringIO(green_stock_data))
     tickers = green_stock_df["Ticker"].tolist()
@@ -98,15 +100,15 @@ def fetch_finnhub_financials():
                 "current_price": quote["c"],
                 "marketCapitalization": basic_financial["metric"]["marketCapitalization"]
             }
-            destination_blob_name = f"raw/finnhub_financials/{ticker}_financials_{date_str}.json"
+            destination_blob_name = f"{FINNHUB_FOLDER_NAME}/{ticker}_financials_{date_str}.json"
             push_data_to_cs(storage_client, BUCKET_NAME, destination_blob_name, data=json.dumps(combined_data))
             time.sleep(0.5)  # 0.5-second delay between Finnhub API calls
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
 
-def fetch_coincap_prices():
+def fetch_coincap_prices(CRYPTO_FOLDER_NAME):
     """Fetch price data from CoinCap for green_crypto coins and store in GCS raw/ folder"""
-    green_crypto_blob = storage_client.bucket(BUCKET_NAME).blob(f"{FOLDER_NAME}/green_crypto.csv" if FOLDER_NAME else "green_crypto.csv")
+    green_crypto_blob = storage_client.bucket(BUCKET_NAME).blob(f"{CRYPTO_FOLDER_NAME}/green_crypto.csv" if CRYPTO_FOLDER_NAME else "green_crypto.csv")
     green_crypto_data = green_crypto_blob.download_as_string().decode("utf-8")
     green_crypto_df = pd.read_csv(pd.compat.StringIO(green_crypto_data))
     coins = green_crypto_df["Coin"].str.lower().tolist()
@@ -118,7 +120,7 @@ def fetch_coincap_prices():
             data = fetch_api_data(url)
             if data:
                 minimal_data = {"coin": coin, "price_usd": float(data["data"]["priceUsd"])}
-                destination_blob_name = f"raw/coincap_prices/{coin}_price_{date_str}.json"
+                destination_blob_name = f"{COINCAP_FOLDER_NAME}/{coin}_price_{date_str}.json"
                 push_data_to_cs(storage_client, BUCKET_NAME, destination_blob_name, data=json.dumps(minimal_data))
                 time.sleep(0.3)  # 0.3-second delay between CoinCap API calls
         except Exception as e:
@@ -129,7 +131,7 @@ def load_to_bigquery():
     bq_tables = [
         # CSV Files from bucket root
         {
-            "source": f"gs://{BUCKET_NAME}/{FOLDER_NAME}/green_crypto.csv" if FOLDER_NAME else f"gs://{BUCKET_NAME}/green_crypto.csv",
+            "source": f"gs://{BUCKET_NAME}/{CRYPTO_FOLDER_NAME}/green_crypto.csv" if CRYPTO_FOLDER_NAME else f"gs://{BUCKET_NAME}/green_crypto.csv",
             "destination": "devops-practice-449210.finboard.raw_green_crypto",
             "schema": [
                 {"name": "Coin", "type": "STRING"},
@@ -147,7 +149,7 @@ def load_to_bigquery():
             "skip_leading_rows": 1
         },
         {
-            "source": f"gs://{BUCKET_NAME}/{FOLDER_NAME}/green_crypto_carbon.csv" if FOLDER_NAME else f"gs://{BUCKET_NAME}/green_crypto_carbon.csv",
+            "source": f"gs://{BUCKET_NAME}/{CRYPTO_FOLDER_NAME}/green_crypto_carbon.csv" if CRYPTO_FOLDER_NAME else f"gs://{BUCKET_NAME}/green_crypto_carbon.csv",
             "destination": "devops-practice-449210.finboard.raw_green_crypto_carbon",
             "schema": [
                 {"name": "Coin", "type": "STRING"},
@@ -162,7 +164,7 @@ def load_to_bigquery():
             "skip_leading_rows": 1
         },
         {
-            "source": f"gs://{BUCKET_NAME}/{FOLDER_NAME}/green_stock.csv" if FOLDER_NAME else f"gs://{BUCKET_NAME}/green_stock.csv",
+            "source": f"gs://{BUCKET_NAME}/{STOCK_FOLDER_NAME}/green_stock.csv" if STOCK_FOLDER_NAME else f"gs://{BUCKET_NAME}/green_stock.csv",
             "destination": "devops-practice-449210.finboard.raw_green_stock",
             "schema": [
                 {"name": "ID", "type": "INTEGER"},
@@ -181,7 +183,7 @@ def load_to_bigquery():
             "skip_leading_rows": 1
         },
         {
-            "source": f"gs://{BUCKET_NAME}/{FOLDER_NAME}/green_stock_carbon.csv" if FOLDER_NAME else f"gs://{BUCKET_NAME}/green_stock_carbon.csv",
+            "source": f"gs://{BUCKET_NAME}/{STOCK_FOLDER_NAME}/green_stock_carbon.csv" if STOCK_FOLDER_NAME else f"gs://{BUCKET_NAME}/green_stock_carbon.csv",
             "destination": "devops-practice-449210.finboard.raw_green_stock_carbon",
             "schema": [
                 {"name": "ID", "type": "INTEGER"},
@@ -196,7 +198,7 @@ def load_to_bigquery():
         },
         # API JSON Files in raw/ folder
         {
-            "source": f"gs://{BUCKET_NAME}/{FOLDER_NAME}/raw/finnhub_financials/*_financials_{datetime.now().strftime('%Y-%m-%d')}.json" if FOLDER_NAME else f"gs://{BUCKET_NAME}/raw/finnhub_financials/*_financials_{datetime.now().strftime('%Y-%m-%d')}.json",
+            "source": f"gs://{BUCKET_NAME}/{FINNHUB_FOLDER_NAME}/*_financials_{datetime.now().strftime('%Y-%m-%d')}.json" if FINNHUB_FOLDER_NAME else f"gs://{BUCKET_NAME}/raw/finnhub_financials/*_financials_{datetime.now().strftime('%Y-%m-%d')}.json",
             "destination": "devops-practice-449210.finboard.raw_finnhub_financials",
             "schema": [
                 {"name": "ticker", "type": "STRING"},
@@ -207,7 +209,7 @@ def load_to_bigquery():
             "skip_leading_rows": 0
         },
         {
-            "source": f"gs://{BUCKET_NAME}/{FOLDER_NAME}/raw/coincap_prices/*_price_{datetime.now().strftime('%Y-%m-%d')}.json" if FOLDER_NAME else f"gs://{BUCKET_NAME}/raw/coincap_prices/*_price_{datetime.now().strftime('%Y-%m-%d')}.json",
+            "source": f"gs://{BUCKET_NAME}/{COINCAP_FOLDER_NAME}/*_price_{datetime.now().strftime('%Y-%m-%d')}.json" if COINCAP_FOLDER_NAME else f"gs://{BUCKET_NAME}/raw/coincap_prices/*_price_{datetime.now().strftime('%Y-%m-%d')}.json",
             "destination": "devops-practice-449210.finboard.raw_coincap_prices",
             "schema": [
                 {"name": "coin", "type": "STRING"},
