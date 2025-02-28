@@ -106,7 +106,7 @@ def fetch_finnhub_financials():
         except Exception as e:
             print(f"Error fetching data for {ticker}: {e}")
 
-def fetch_coincap_prices(CRYPTO_FOLDER_NAME):
+def fetch_coincap_prices():
     """Fetch price data from CoinCap for green_crypto coins and store in GCS raw/ folder"""
     green_crypto_blob = storage_client.bucket(BUCKET_NAME).blob(f"{CRYPTO_FOLDER_NAME}/green_crypto.csv" if CRYPTO_FOLDER_NAME else "green_crypto.csv")
     green_crypto_data = green_crypto_blob.download_as_string().decode("utf-8")
