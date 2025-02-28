@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: finboard
+    database: devops-practice-449210
+    schema: finboard
+    tables:
+      - name: green_crypto
+      - name: green_crypto_carbon_mj
+      - name: green_stock
+      - name: green_stock_carbon
+      - name: stocks_finance
