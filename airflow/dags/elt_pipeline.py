@@ -127,8 +127,8 @@ def fetch_coincap_prices():
         except Exception as e:
             print(f"Error fetching price for {coin}: {e}")
 
-def load_to_bigquery():
-    """Load raw CSV and JSON data from GCS to BigQuery staging tables"""
+def load_csv_to_bigquery():
+    """Load raw CSV data from GCS to BigQuery tables"""
     bq_tables = [
         # CSV Files from bucket root
         {
@@ -196,7 +196,28 @@ def load_to_bigquery():
             ],
             "source_format": "CSV",
             "skip_leading_rows": 1
-        },
+        }
+    ]
+    
+    for config in bq_tables:
+        job_config = bigquery.LoadJobConfig(
+            source_format=config["source_format"],
+            skip_leading_rows=config["skip_leading_rows"],
+            schema=config["schema"],
+            
+            write_disposition="WRITE_TRUNCATE",
+            autodetect=False,
+            null_marker=""  # Treat empty strings as NULL for CSVs
+        )
+        load_job = bigquery_client.load_table_from_uri(
+            config["source"], config["destination"], job_config=job_config
+        )
+        load_job.result()
+        print(f"Loaded data into {config['destination']}")
+
+def load_json_to_bigquery():
+    """Load raw JSON data from GCS to BigQuery tables"""
+    bq_tables = [
         # API JSON Files in raw/ folder
         {
             "source": f"gs://{BUCKET_NAME}/{FINNHUB_FOLDER_NAME}/*_financials_{datetime.now().strftime('%Y-%m-%d')}.json" if FINNHUB_FOLDER_NAME else f"gs://{BUCKET_NAME}/raw/finnhub_financials/*_financials_{datetime.now().strftime('%Y-%m-%d')}.json",
@@ -217,18 +238,16 @@ def load_to_bigquery():
                 {"name": "price_usd", "type": "FLOAT", "mode": "NULLABLE"}
             ],
             "source_format": "NEWLINE_DELIMITED_JSON",
-            "skip_leading_rows": 0
         }
     ]
     
     for config in bq_tables:
         job_config = bigquery.LoadJobConfig(
             source_format=config["source_format"],
-            skip_leading_rows=config["skip_leading_rows"],
             schema=config["schema"],
+            
             write_disposition="WRITE_TRUNCATE",
             autodetect=False,
-            null_marker=""  # Treat empty strings as NULL for CSVs
         )
         load_job = bigquery_client.load_table_from_uri(
             config["source"], config["destination"], job_config=job_config
@@ -257,9 +276,14 @@ with DAG(
         python_callable=fetch_coincap_prices
     )
     
-    load_to_bq = PythonOperator(
-        task_id="load_to_bigquery",
-        python_callable=load_to_bigquery
+    load_json_to_bq = PythonOperator(
+        task_id="load_json_to_bigquery",
+        python_callable=load_json_to_bigquery
+    )
+    
+    load_csv_to_bq = PythonOperator(
+        task_id="load_csv_to_bigquery",
+        python_callable=load_csv_to_bigquery
     )
     
     run_dbt_cloud_job = DbtCloudRunJobOperator(
@@ -273,4 +297,4 @@ with DAG(
         additional_run_config={"threads": 4}
     )
     
-    [fetch_finnhub, fetch_coincap] >> load_to_bq >> run_dbt_cloud_job
+    [fetch_finnhub, fetch_coincap] >> [load_csv_to_bq, load_json_to_bq] >> run_dbt_cloud_job
