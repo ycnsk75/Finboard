@@ -1,0 +1,39 @@
+name: 'green_finance'
+version: '1.0.0'
+config-version: 2
+
+profile: 'bigquery'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  green_finance:
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts
+      crypto_mart:
+        +schema: marts_crypto
+      stock_mart:
+        +schema: marts_stock
+      green_finance:
+        +schema: marts_green_finance
+
+vars:
+  raw_database: 'your_project_id'
+  raw_schema: 'your_dataset'
