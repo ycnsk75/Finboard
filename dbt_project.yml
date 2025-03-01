@@ -35,5 +35,5 @@ models:
         +schema: marts_green_finance
 
 vars:
-  raw_database: 'your_project_id'
-  raw_schema: 'your_dataset'
+  raw_database: 'devops-practice-449210'
+  raw_schema: 'finboard'
