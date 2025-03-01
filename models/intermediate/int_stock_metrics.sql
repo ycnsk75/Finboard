@@ -29,8 +29,8 @@ SELECT
     -- Calcul des métriques environnementales
     CASE
         WHEN sc.co2_emissions_mt > 0 AND gs.revenue_billions > 0
-        THEN gs.revenue_billions / sc.co2_emissions_mt
-        ELSE NULL
+        THEN SAFE_CAST(gs.revenue_billions / sc.co2_emissions_mt AS FLOAT64)
+            ELSE NULL
     END AS revenue_per_co2,
     CASE
         WHEN sc.co2_emissions_mt > 0 AND COALESCE(gs.market_cap, ff.market_cap) > 0
