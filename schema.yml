@@ -1,0 +1,83 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Données brutes de finance écologique"
+    database: "{{ var('raw_database', target.database) }}"
+    schema: "{{ var('raw_schema', 'public') }}"
+    tables:
+      - name: raw_coincap_prices
+        description: "Prix actuels des cryptomonnaies de CoinCap"
+        columns:
+          - name: coin
+            description: "Nom de la cryptomonnaie"
+          - name: price_usd
+            description: "Prix en USD"
+
+      - name: raw_finnhub_financials
+        description: "Données financières des actions de Finnhub"
+        columns:
+          - name: ticker
+            description: "Symbole boursier"
+          - name: current_price
+            description: "Prix actuel de l'action"
+          - name: marketCapitalization
+            description: "Capitalisation boursière"
+
+      - name: raw_green_crypto
+        description: "Données des cryptomonnaies vertes"
+        columns:
+          - name: Coin
+            description: "Nom de la cryptomonnaie"
+          - name: Symbol
+            description: "Symbole de la cryptomonnaie"
+          - name: Price
+            description: "Prix actuel"
+          - name: Percent_Change
+            description: "Changement en pourcentage"
+          - name: Timestamp
+            description: "Timestamp de la donnée"
+
+      - name: raw_green_crypto_carbon
+        description: "Données d'empreinte carbone des cryptomonnaies"
+        columns:
+          - name: Coin
+            description: "Nom de la cryptomonnaie"
+          - name: Symbol
+            description: "Symbole de la cryptomonnaie"
+          - name: Electrical_Power_GW
+            description: "Puissance électrique en gigawatts"
+          - name: Electricity_Consumption_GW
+            description: "Consommation d'électricité en gigawatts"
+          - name: CO2_Emissions_Mt
+            description: "Émissions de CO2 en mégatonnes"
+
+      - name: raw_green_stock
+        description: "Données des actions vertes"
+        columns:
+          - name: ID
+            description: "Identifiant unique de l'entreprise"
+          - name: Company
+            description: "Nom de l'entreprise"
+          - name: Ticker
+            description: "Symbole boursier"
+          - name: Category
+            description: "Catégorie d'industrie verte"
+          - name: ESG_Score
+            description: "Score ESG (Environmental, Social, Governance)"
+
+      - name: raw_green_stock_carbon
+        description: "Données d'empreinte carbone des entreprises vertes"
+        columns:
+          - name: ID
+            description: "Identifiant unique de l'entreprise"
+          - name: Company
+            description: "Nom de l'entreprise"
+          - name: Ticker
+            description: "Symbole boursier"
+          - name: Electricity_Consumption_GWh
+            description: "Consommation d'électricité en gigawatt-heures"
+          - name: CO2_Emissions_Mt
+            description: "Émissions de CO2 en mégatonnes"
+          - name: Electrical_Power_GWh
+            description: "Puissance électrique en gigawatt-heures"
