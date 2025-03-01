@@ -1,5 +1,6 @@
 # Core dependencies
 apache-airflow==2.10.5
+dbt-core
 streamlit==1.35.0
 pandas==2.1.4
 numpy==1.24.4
