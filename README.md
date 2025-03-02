@@ -24,6 +24,7 @@ Finboard is a comprehensive platform that provides real-time financial metrics f
 - CCRI Datasets: Climate change risk and impact metrics
 - Green Stock Lists (from greenstocknews.com): Curated collections of environmentally responsible investments
 ### Architecture
+```
                                   ┌───────────────┐
                                   │  Data Sources │
                                   └───────┬───────┘
@@ -60,6 +61,7 @@ Finboard is a comprehensive platform that provides real-time financial metrics f
 └─────────────────────────────────────────────────────────────────┘
                            Deployed with
                          GitHub Actions CI/CD
+```
 ## Green Efficiency Score
 The Green Efficiency Score combines:
 - Financial performance metrics
