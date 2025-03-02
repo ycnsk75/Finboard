@@ -11,9 +11,10 @@ crypto_carbon AS (
     SELECT * FROM {{ ref('stg_green_crypto_carbon') }}
 )
 
+-- Utiliser green_crypto comme table principale car elle contient les deux informations
 SELECT
-    COALESCE(cc.coin_name, gc.coin_name, cp.coin) AS coin_name,
-    COALESCE(cc.symbol, gc.symbol, LOWER(cp.coin)) AS symbol,
+    COALESCE(gc.coin_name, cc.coin_name) AS coin_name,
+    COALESCE(gc.symbol, cc.symbol) AS symbol,
     SAFE_CAST(cp.price_usd AS FLOAT64) AS price_usd,
     SAFE_CAST(gc.price AS FLOAT64) AS green_price,
     SAFE_CAST(gc.percent_change AS FLOAT64) AS percent_change,
@@ -39,13 +40,6 @@ SELECT
         WHEN SAFE_CAST(cc.co2_emissions_mt AS FLOAT64) < 0.1 THEN 'Impact élevé'
         ELSE 'Impact très élevé'
     END AS environmental_impact_category
-FROM crypto_carbon cc
--- Joindre sur le symbole normalisé
-LEFT JOIN green_crypto gc ON TRIM(LOWER(cc.symbol)) = TRIM(LOWER(gc.symbol))
--- Changement clé: tenter une jointure plus intelligente pour crypto_prices
-LEFT JOIN crypto_prices cp ON 
-    -- Essayer d'abord une correspondance directe symbole-coin (moins probable)
-    TRIM(LOWER(cc.symbol)) = TRIM(LOWER(cp.coin))
-    -- OU essayer une correspondance partielle (plus probable)
-    OR LOWER(cp.coin) LIKE CONCAT('%', LOWER(cc.coin_name), '%')
-    OR LOWER(cc.coin_name) LIKE CONCAT('%', LOWER(cp.coin), '%')
+FROM green_crypto gc
+LEFT JOIN crypto_carbon cc ON TRIM(LOWER(gc.symbol)) = TRIM(LOWER(cc.symbol))
+LEFT JOIN crypto_prices cp ON TRIM(LOWER(gc.coin_name)) = TRIM(LOWER(cp.coin))
