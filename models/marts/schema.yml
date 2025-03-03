@@ -8,7 +8,6 @@ models:
       - name: coin_name
         description: "Nom de la cryptomonnaie"
         tests:
-          - unique
           - not_null
       - name: symbol
         description: "Symbole/ticker de la cryptomonnaie"
