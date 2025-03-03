@@ -35,3 +35,10 @@ output "service_account_key" {
     description = "Private key of the created service account (base64 encoded)"
     sensitive = true
 }
+
+terraform {
+  backend "gcs" {
+    bucket = "tfstate_backups"
+    prefix = "states/terraform.tfstate"
+  }
+}
