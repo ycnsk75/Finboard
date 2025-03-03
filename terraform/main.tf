@@ -39,6 +39,6 @@ output "service_account_key" {
 terraform {
   backend "gcs" {
     bucket = "tfstate_backups"
-    prefix = "states/terraform.tfstate"
+    prefix = "terraform/state"
   }
 }
