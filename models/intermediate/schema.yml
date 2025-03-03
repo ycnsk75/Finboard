@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: int_crypto_metrics
+    description: "Métriques combinées pour les cryptomonnaies vertes"
+    columns:
+      - name: coin_name
+        description: "Nom de la cryptomonnaie"
+        tests:
+          - not_null
+      - name: symbol
+        description: "Symbole/ticker de la cryptomonnaie"
+        tests:
+          - not_null
+      - name: price_usd
+        description: "Prix en USD depuis CoinCap"
+      - name: green_price
+        description: "Prix depuis la source green_crypto"
+      - name: percent_change
+        description: "Pourcentage de changement sur 24h"
+      - name: market_cap
+        description: "Capitalisation boursière"
+      - name: electricity_consumption_gw
+        description: "Consommation d'électricité en gigawatts"
+      - name: co2_emissions_mt
+        description: "Émissions de CO2 en mégatonnes"
+      - name: market_cap_per_co2
+        description: "Ratio capitalisation/émissions CO2 (efficacité verte)"
+      - name: co2_emissions_tonnes
+        description: "Émissions de CO2 en tonnes"
+      - name: environmental_impact_category
+        description: "Catégorie d'impact environnemental"
+        tests:
+          - accepted_values:
+              values: ['Très faible impact', 'Faible impact', 'Impact modéré', 'Impact élevé', 'Impact très élevé']
+
+  - name: int_stock_metrics
+    description: "Métriques combinées pour les actions vertes"
+    columns:
+      - name: id
+        description: "Identifiant unique de l'entreprise"
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: "Nom de l'entreprise"
+        tests:
+          - not_null
+      - name: ticker
+        description: "Symbole boursier"
+        tests:
+          - not_null
+      - name: category
+        description: "Catégorie d'industrie verte"
+      - name: stock_exchange
+        description: "Place boursière"
+      - name: market_cap
+        description: "Capitalisation boursière"
+      - name: esg_score
+        description: "Score ESG (Environmental, Social, Governance)"
+      - name: revenue_billions
+        description: "Chiffre d'affaires en milliards"
+      - name: main_focus
+        description: "Activité principale détaillée"
+      - name: region
+        description: "Région géographique"
+      - name: year_founded
+        description: "Année de fondation"
+      - name: electricity_consumption_gwh
+        description: "Consommation d'électricité en gigawatt-heures"
+      - name: co2_emissions_mt
+        description: "Émissions de CO2 en mégatonnes"
+      - name: electrical_power_gwh
+        description: "Puissance électrique en gigawatt-heures"
+      - name: current_price
+        description: "Prix actuel de l'action"
+      - name: revenue_per_co2
+        description: "Ratio chiffre d'affaires/émissions CO2"
+      - name: market_cap_per_co2
+        description: "Ratio capitalisation/émissions CO2 (efficacité verte)"
+      - name: revenue_per_gwh
+        description: "Ratio chiffre d'affaires/consommation électrique"
+      - name: combined_environmental_score
+        description: "Score environnemental combiné (ESG + efficacité carbone)"
