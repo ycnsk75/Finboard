@@ -259,10 +259,11 @@ def load_json_to_bigquery():
 with DAG(
     "elt_pipeline",
     start_date=datetime(2025, 2, 1),
-    default_args={"dbt_cloud_conn_id": DBT_CLOUD_CONN_ID, "account_id": DBT_CLOUD_ACCOUNT_ID},
     schedule_interval=SCHEDULE_INTERVAL,
     catchup=False,
     default_args={
+        "dbt_cloud_conn_id": DBT_CLOUD_CONN_ID,
+        "account_id": DBT_CLOUD_ACCOUNT_ID,
         "retries": 1,
         "retry_delay": timedelta(minutes=5),
     }
