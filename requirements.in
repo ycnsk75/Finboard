@@ -6,8 +6,11 @@ numpy==1.24.4
 scikit-learn==1.5.2
 matplotlib==3.10.0
 seaborn==0.13.2
+selenium
+beautifulsoup4
 plotly==5.20.0
 python-dotenv==1.0.1
+protobuf>=3.20,<5.0
 
 # Airflow providers
 apache-airflow-providers-celery==3.8.2

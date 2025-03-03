@@ -1,0 +1,33 @@
+name: 'finboard_dbt'
+version: '1.0.0'
+config-version: 2
+
+profile: 'default'
+
+model-paths: ["models"]
+analysis-paths: ["analysis"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  finboard_dbt:
+    staging:
+      +materialized: view
+    mart:
+      +materialized: incremental
+      green_crypto:
+        +schema: finboard
+        +unique_key: "ticker || '-' || date"  # Composite key for deduplication
+      green_stocks:
+        +schema: finboard
+        +unique_key: "ticker || '-' || date"  # Composite key for deduplication
+
+vars:
+  project_id: 'devops-practice-449210'
+  dataset: 'finboard'

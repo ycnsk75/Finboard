@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: raw
+    database: "{{ var('project_id') }}"
+    schema: "{{ var('dataset') }}"
+    tables:
+      - name: raw_finnhub_financials
+        description: "Raw financial data for stocks from Finnhub API"
+      - name: raw_coincap_prices
+        description: "Raw price data for cryptocurrencies from CoinCap API"
+      - name: raw_green_crypto
+        description: "Raw data for green cryptocurrencies from CSV"
+      - name: raw_green_crypto_carbon
+        description: "Raw carbon data for green cryptocurrencies from CSV"
+      - name: raw_green_stock
+        description: "Raw data for green stocks from CSV"
+      - name: raw_green_stock_carbon
+        description: "Raw carbon data for green stocks from CSV"
