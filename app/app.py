@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import numpy as np
 from datetime import datetime, timedelta
 from google.cloud import bigquery
 from google.oauth2 import service_account
@@ -102,8 +101,7 @@ def load_historical_data(symbol, days=365, asset_type="Stock"):
     df = client.query(query, job_config=job_config).to_dataframe()
     if not df.empty:
         df['Date'] = pd.to_datetime(df['date'])
-        df['Volume'] = np.random.uniform(50000, 5000000, size=len(df)).astype(int)
-    return df if not df.empty else pd.DataFrame({'Date': [], 'Price': [], 'Volume': []})
+    return df if not df.empty else pd.DataFrame({'Date': [], 'Price': []})
 
 # Enhanced gauge function
 def create_gauge(score):
@@ -262,8 +260,14 @@ with tab1:
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=historical_data['Date'], y=historical_data['Price'], mode='lines', 
                                     name=selected_symbol, line=dict(color="#1E8449", width=2)))
-            fig.update_layout(title=f"{selected_stock} - Price Trend", xaxis_title="Date", yaxis_title="Price (USD)",
-                             height=500, template="plotly_white", xaxis=dict(rangeslider=dict(visible=True)))
+            fig.update_layout(
+                title=f"{selected_stock} - Price Trend",
+                xaxis_title="Date",
+                yaxis_title="Price (USD)",
+                height=500,
+                template="plotly_white",
+                xaxis=dict(rangeslider=dict(visible=True))
+            )
             st.plotly_chart(fig, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
     else:
@@ -329,8 +333,14 @@ with tab2:
             fig = go.Figure()
             fig.add_trace(go.Scatter(x=historical_data['Date'], y=historical_data['Price'], mode='lines', 
                                     name=selected_symbol, line=dict(color="#1E8449", width=2)))
-            fig.update_layout(title=f"{selected_crypto} - Price Trend", xaxis_title="Date", yaxis_title="Price (USD)",
-                             height=500, template="plotly_white", xaxis=dict(rangeslider=dict(visible=True)))
+            fig.update_layout(
+                title=f"{selected_crypto} - Price Trend",
+                xaxis_title="Date",
+                yaxis_title="Price (USD)",
+                height=500,
+                template="plotly_white",
+                xaxis=dict(rangeslider=dict(visible=True))
+            )
             st.plotly_chart(fig, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
         
