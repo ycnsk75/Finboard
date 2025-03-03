@@ -1,0 +1,257 @@
+version: 2
+
+models:
+  # Crypto Mart Models
+  - name: dim_cryptocurrencies
+    description: "Dimension des cryptomonnaies avec leurs informations de base"
+    columns:
+      - name: coin_name
+        description: "Nom de la cryptomonnaie"
+        tests:
+          - not_null
+      - name: symbol
+        description: "Symbole/ticker de la cryptomonnaie"
+        tests:
+          - not_null
+      - name: price_usd
+        description: "Prix actuel en USD"
+      - name: green_price
+        description: "Prix de la source green_crypto"
+      - name: percent_change
+        description: "Pourcentage de changement sur 24h"
+      - name: market_cap
+        description: "Capitalisation boursière"
+      - name: environmental_impact_category
+        description: "Catégorie d'impact environnemental"
+
+  - name: fact_crypto_environmental
+    description: "Métriques environnementales des cryptomonnaies"
+    columns:
+      - name: coin_name
+        description: "Nom de la cryptomonnaie"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_cryptocurrencies')
+              field: coin_name
+      - name: symbol
+        description: "Symbole/ticker de la cryptomonnaie"
+      - name: electricity_consumption_gw
+        description: "Consommation d'électricité en gigawatts"
+      - name: co2_emissions_mt
+        description: "Émissions de CO2 en mégatonnes"
+      - name: co2_emissions_tonnes
+        description: "Émissions de CO2 en tonnes"
+      - name: market_cap_per_co2
+        description: "Ratio capitalisation/émissions CO2 (efficacité verte)"
+      - name: relative_emissions_to_bitcoin
+        description: "Émissions relatives comparées à Bitcoin (Bitcoin = 1.0)"
+      - name: market_cap_per_kwh
+        description: "Capitalisation boursière par kilowatt-heure"
+      - name: ecological_score
+        description: "Score écologique (0-100)"
+      - name: ecological_category
+        description: "Catégorie écologique"
+      - name: environmental_impact_category
+        description: "Catégorie d'impact environnemental"
+
+  # Stock Mart Models
+  - name: dim_companies
+    description: "Dimension des entreprises vertes avec informations de base"
+    columns:
+      - name: id
+        description: "Identifiant unique de l'entreprise"
+        tests:
+          - unique
+          - not_null
+      - name: company_name
+        description: "Nom de l'entreprise"
+        tests:
+          - not_null
+      - name: ticker
+        description: "Symbole boursier"
+        tests:
+          - not_null
+      - name: category
+        description: "Catégorie d'industrie verte"
+      - name: stock_exchange
+        description: "Place boursière"
+      - name: market_cap
+        description: "Capitalisation boursière"
+      - name: esg_score
+        description: "Score ESG (Environmental, Social, Governance)"
+      - name: revenue_billions
+        description: "Chiffre d'affaires en milliards"
+      - name: main_focus
+        description: "Activité principale détaillée"
+      - name: region
+        description: "Région géographique"
+      - name: year_founded
+        description: "Année de fondation"
+      - name: current_price
+        description: "Prix actuel de l'action"
+      - name: company_age
+        description: "Âge de l'entreprise en années"
+      - name: company_size
+        description: "Classification par taille (Large Cap, Mid Cap, Small Cap)"
+      - name: esg_category
+        description: "Catégorie de performance ESG"
+      - name: region_group
+        description: "Région standardisée et groupée"
+
+  - name: fact_stock_environmental
+    description: "Métriques environnementales des entreprises vertes"
+    columns:
+      - name: id
+        description: "Identifiant unique de l'entreprise"
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_companies')
+              field: id
+      - name: company_name
+        description: "Nom de l'entreprise"
+      - name: ticker
+        description: "Symbole boursier"
+      - name: electricity_consumption_gwh
+        description: "Consommation d'électricité en gigawatt-heures"
+      - name: co2_emissions_mt
+        description: "Émissions de CO2 en mégatonnes"
+      - name: electrical_power_gwh
+        description: "Puissance électrique en gigawatt-heures"
+      - name: revenue_per_co2
+        description: "Ratio chiffre d'affaires/émissions CO2"
+      - name: market_cap_per_co2
+        description: "Ratio capitalisation/émissions CO2 (efficacité verte)"
+      - name: revenue_per_gwh
+        description: "Ratio chiffre d'affaires/consommation électrique"
+      - name: combined_environmental_score
+        description: "Score environnemental combiné (ESG + efficacité carbone)"
+      - name: normalized_environmental_score
+        description: "Score environnemental normalisé (0-100)"
+      - name: carbon_intensity_tonnes_per_million
+        description: "Tonnes de CO2 par million de dollars de revenus"
+      - name: carbon_efficiency_percentile
+        description: "Percentile d'efficacité carbone (0-100)"
+      - name: environmental_performance_category
+        description: "Catégorie de performance environnementale"
+      - name: carbon_emission_category
+        description: "Catégorie d'émission de carbone"
+
+  # Green Finance Mart Models
+  - name: green_investment_overview
+    description: "Vue unifiée des investissements verts (crypto et actions)"
+    columns:
+      - name: asset_type
+        description: "Type d'actif (Cryptocurrency ou Stock)"
+        tests:
+          - accepted_values:
+              values: ['Cryptocurrency', 'Stock']
+      - name: asset_name
+        description: "Nom de l'actif (nom de la crypto ou de l'entreprise)"
+        tests:
+          - not_null
+      - name: asset_symbol
+        description: "Symbole/ticker"
+        tests:
+          - not_null
+      - name: current_price
+        description: "Prix actuel"
+      - name: market_cap
+        description: "Capitalisation boursière"
+      - name: co2_emissions_mt
+        description: "Émissions de CO2 en mégatonnes"
+      - name: energy_consumption
+        description: "Consommation d'énergie normalisée"
+      - name: green_efficiency
+        description: "Efficacité écologique (capitalisation/émissions)"
+      - name: environmental_score
+        description: "Score environnemental (0-100)"
+      - name: environmental_category
+        description: "Catégorie environnementale"
+      - name: asset_subtype
+        description: "Sous-type d'actif"
+      - name: estimated_esg
+        description: "Score ESG (réel ou estimé)"
+      - name: region
+        description: "Région géographique"
+      - name: year_founded
+        description: "Année de fondation"
+      - name: main_focus
+        description: "Activité principale"
+
+  - name: environmental_impact_comparison
+    description: "Comparaison d'impact environnemental entre classes d'actifs"
+    columns:
+      - name: asset_type
+        description: "Type/sous-type d'actif ou 'Tous actifs'"
+        tests:
+          - not_null
+      - name: total_assets
+        description: "Nombre total d'actifs dans la catégorie"
+      - name: avg_co2_emissions
+        description: "Émissions moyennes de CO2"
+      - name: total_co2_emissions
+        description: "Émissions totales de CO2"
+      - name: avg_efficiency
+        description: "Efficacité écologique moyenne"
+      - name: avg_environmental_score
+        description: "Score environnemental moyen"
+      - name: total_market_cap
+        description: "Capitalisation boursière totale"
+      - name: carbon_intensity_per_million_usd
+        description: "Intensité carbone par million USD de capitalisation"
+      - name: energy_intensity_per_million_usd
+        description: "Intensité énergétique par million USD de capitalisation"
+
+  - name: carbon_efficiency_metrics
+    description: "Métriques détaillées d'efficacité carbone"
+    columns:
+      - name: asset_type
+        description: "Type d'actif (Cryptocurrency ou Stock)"
+      - name: asset_name
+        description: "Nom de l'actif"
+      - name: asset_symbol
+        description: "Symbole/ticker"
+      - name: current_price
+        description: "Prix actuel"
+      - name: market_cap
+        description: "Capitalisation boursière"
+      - name: co2_emissions_mt
+        description: "Émissions de CO2 en mégatonnes"
+      - name: energy_consumption
+        description: "Consommation d'énergie"
+      - name: green_efficiency
+        description: "Efficacité écologique brute"
+      - name: environmental_score
+        description: "Score environnemental"
+      - name: environmental_category
+        description: "Catégorie environnementale"
+      - name: relative_efficiency
+        description: "Efficacité relative à la moyenne de sa catégorie"
+      - name: efficiency_z_score
+        description: "Score Z d'efficacité (écarts-types par rapport à la moyenne)"
+      - name: efficiency_percentile
+        description: "Percentile d'efficacité (0-100)"
+      - name: efficiency_rank
+        description: "Classement d'efficacité au sein de sa catégorie"
+      - name: efficiency_rank_percentile
+        description: "Percentile de classement (0-100)"
+      - name: green_investment_category
+        description: "Catégorie d'investissement vert"
+      - name: carbon_intensity_per_million
+        description: "CO2 par million de capitalisation"
+      - name: eco_roi_usd_per_ton_co2
+        description: "ROI écologique ($ par tonne de CO2)"
+      - name: asset_subtype
+        description: "Sous-type d'actif"
+      - name: estimated_esg
+        description: "Score ESG estimé"
+      - name: region
+        description: "Région géographique"
+      - name: year_founded
+        description: "Année de fondation"
+      - name: main_focus
+        description: "Activité principale"
+      - name: analysis_timestamp
+        description: "Horodatage de l'analyse"

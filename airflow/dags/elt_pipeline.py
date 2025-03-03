@@ -11,6 +11,9 @@ import json
 
 SERVICE_ACCOUNT_KEY = "/home/airflow/gcs/data/devops-practice-python.json"
 FINNHUB_API_KEY = "cutr999r01qv6ijjvqn0cutr999r01qv6ijjvqng"
+
+SERVICE_ACCOUNT_KEY = os.getenv("KEY_JSON_FILE")
+FINNHUB_API_KEY = os.getenv("API_KEY_FINHUB")
 finnhub_client = finnhub.Client(api_key=FINNHUB_API_KEY)
 COINCAP_API = "https://api.coincap.io/v2/assets/"
 
@@ -30,7 +33,7 @@ def load_csv_to_gcs():
         blob = bucket.blob(f"raw/csv/{csv_file}")
         blob.upload_from_filename(csv_file)
 
-def fetch_finnhub_quotes():
+def fetch_finnhub_marketcap():
     """Fetch quote data (current price only) from Finnhub for green_stock companies"""
     storage_client = storage.Client.from_service_account_json(SERVICE_ACCOUNT_KEY)
     bucket = storage_client.bucket("green-investment-raw-data")
@@ -43,10 +46,10 @@ def fetch_finnhub_quotes():
     date_str = datetime.now().strftime("%Y-%m-%d")
     for ticker in tickers:
         try:
-            quote = finnhub_client.quote(ticker)
-            minimal_quote = {"ticker": ticker, "current_price": quote["c"]}
+            basic_financial = finnhub_client.company_basic_financials(ticker)
+            marketcap = {"ticker": ticker, "marketCapitalization": basic_financial["marketCapitalization"]}
             blob = bucket.blob(f"raw/finnhub_quotes/{ticker}_quote_{date_str}.json")
-            blob.upload_from_string(json.dumps(minimal_quote))
+            blob.upload_from_string(json.dumps(marketcap))
         except Exception as e:
             print(f"Error fetching quote for {ticker}: {e}")
 
@@ -78,7 +81,7 @@ def fetch_coincap_prices():
         except Exception as e:
             print(f"Error fetching price for {coin}: {e}")
 
-def load_csv_to_bigquery():
+def load_data_to_bigquery():
     """Load raw CSV and JSON data from GCS to BigQuery staging tables"""
     bq_client = bigquery.Client.from_service_account_json(SERVICE_ACCOUNT_KEY)
     
@@ -159,6 +162,25 @@ def load_csv_to_bigquery():
         }
     ]
     
+    json_configs = [
+        {
+            "source": "gs://green-investment-raw-data/raw/finnhub_quotes/*.json",
+            "destination": "green-investment.staging.raw_finnhub_quotes",
+            "schema": [
+                {"name": "ticker", "type": "STRING"},
+                {"name": "current_price", "type": "FLOAT"}
+            ]
+        },
+        {
+            "source": "gs://green-investment-raw-data/raw/coincap_prices/*.json",
+            "destination": "green-investment.staging.raw_coincap_prices",
+            "schema": [
+                {"name": "coin", "type": "STRING"},
+                {"name": "price_usd", "type": "FLOAT"}
+            ]
+        }
+    ]
+       
     for config in csv_configs:
         job_config = bigquery.LoadJobConfig(
             source_format="CSV" if config["source"].endswith(".csv") else "NEWLINE_DELIMITED_JSON",
@@ -173,10 +195,24 @@ def load_csv_to_bigquery():
             job_config=job_config
         ).result()
 
+    for config in json_configs:
+        job_config = bigquery.LoadJobConfig(
+            source_format=bigquery.SourceFormat.NEWLINE_DELIMITED_JSON,
+            schema=config["schema"],
+            write_disposition="WRITE_TRUNCATE",
+            autodetect=False
+        )
+        load_job = bq_client.load_table_from_uri(
+            config["source"], 
+            config["destination"], 
+            job_config=job_config
+        )
+        load_job.result()  
+        
 with DAG(
     "elt_green_data",
     start_date=datetime(2025, 2, 1),
-    schedule_interval="0 0 1 * *",
+    schedule="0 0 1 * *",
     catchup=False
 ) as dag:
     upload_to_gcs = PythonOperator(
@@ -195,8 +231,8 @@ with DAG(
     )
     
     load_to_bq = PythonOperator(
-        task_id="load_csv_to_bigquery",
-        python_callable=load_csv_to_bigquery
+        task_id="load_data_to_bigquery",
+        python_callable=load_data_to_bigquery
     )
     
     run_dbt = BashOperator(
