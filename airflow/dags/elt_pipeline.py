@@ -23,6 +23,7 @@ API_KEY_FINHUB = Variable.get('API_KEY_FINHUB')  # Finnhub API key
 COINCAP_API = Variable.get('COINCAP_API')  # CoinCap API URL
 DBT_CLOUD_CONN_ID = Variable.get('DBT_CLOUD_CONN_ID') # Connection ID for dbt Cloud
 DBT_CLOUD_JOB_ID = Variable.get('DBT_CLOUD_JOB_ID') # dbt Cloud job ID
+DBT_CLOUD_ACCOUNT_ID = Variable.get('DBT_CLOUD_ACCOUNT_ID') # dbt Cloud account ID
 
 # Validate required environment variables
 if not all(
@@ -258,6 +259,7 @@ def load_json_to_bigquery():
 with DAG(
     "elt_pipeline",
     start_date=datetime(2025, 2, 1),
+    default_args={"dbt_cloud_conn_id": DBT_CLOUD_CONN_ID, "account_id": DBT_CLOUD_ACCOUNT_ID},
     schedule_interval=SCHEDULE_INTERVAL,
     catchup=False,
     default_args={
@@ -297,6 +299,6 @@ with DAG(
         additional_run_config={"threads": 4}
     )
     
-    fetch_finnhub >> load_json_to_bq  # Fetch tasks run in parallel
-    fetch_coincap >> load_csv_to_bq # Fetch tasks run in parallel
+    fetch_finnhub >> load_json_to_bq # Fetch finnhub run in parallel
+    fetch_coincap >> load_csv_to_bq # Fetch coincap run in parallel
     [load_csv_to_bq, load_json_to_bq] >> run_dbt_cloud_job # Load tasks run before dbt Cloud job
