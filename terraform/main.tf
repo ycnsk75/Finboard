@@ -7,6 +7,11 @@ resource "google_service_account" "finboard-sa" {
     account_id   = "finboard-sa"
     display_name = "Service Account for finboard project"
     description  = "Service account for managing finboard pipelines on GCP"
+    create_ignore_already_exists = true
+
+    lifecycle {
+      prevent_destroy = true # Prevention contre la destruction de cette clé
+    }
 }
 
 resource "google_service_account_key" "finboard-sa-key" {

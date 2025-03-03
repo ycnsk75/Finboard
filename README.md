@@ -1,3 +1,17 @@
+# Finboard
+
+App Diagram
+
+[User] --> [Cloud Run (Streamlit)] --> [APIs (Real-time)]
+                     |                      |
+                [BigQuery] <--> [Airflow] --> [DBT]
+                     |                      |
+               [Cloud Storage] <--> [CSV Files + API Dumps]
+
+CI/CD:
+[Github Actions] --> [Cloud Build] --> [Artifact Registry] --> [Cloud Run]
+                    [Terraform] --> [GCP Infra]
+
 # Finboard: Green Finance Dashboard
 ## Overview
 Finboard is a comprehensive platform that provides real-time financial metrics for environmentally-focused stocks and cryptocurrencies. The dashboard features the proprietary "Green Efficiency Score" which helps investors assess the environmental impact alongside traditional financial performance.

@@ -1,3 +1,4 @@
+from google.cloud import bigquery
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -172,6 +173,15 @@ def generate_historical_data(ticker, days=365, pattern="random"):
     })
     df['Date'] = pd.to_datetime(df['Date'])
     return df
+
+# Authenticate with Google Cloud using a service account key.
+def gcp_client_auth(key_json_file):
+    try:
+        bigquery_client = bigquery.Client.from_service_account_json(key_json_file)  
+        return bigquery_client
+    except Exception as e:
+        print(f"Error connecting to Google Cloud: {e}")
+        exit(1)  # Exit with an error code
 
 # Données des Green Stocks avec plus de détails et de diversité
 @st.cache_data

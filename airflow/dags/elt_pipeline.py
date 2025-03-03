@@ -3,14 +3,14 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
 from google.cloud import storage, bigquery
 from datetime import datetime, timedelta
-from dotenv import load_dotenv
 import os
 import pandas as pd
 import finnhub
 import requests
 import json
 
-load_dotenv()
+SERVICE_ACCOUNT_KEY = "/home/airflow/gcs/data/devops-practice-python.json"
+FINNHUB_API_KEY = "cutr999r01qv6ijjvqn0cutr999r01qv6ijjvqng"
 
 SERVICE_ACCOUNT_KEY = os.getenv("KEY_JSON_FILE")
 FINNHUB_API_KEY = os.getenv("API_KEY_FINHUB")
